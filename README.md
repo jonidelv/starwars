@@ -14,5 +14,4 @@ $ git clone https://github.com/delvallejoni/web-workflow.git
 $ cd web-workflow
 $ npm install
 $ gulp
-
 ```
