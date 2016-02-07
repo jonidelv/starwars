@@ -1,5 +1,6 @@
 # web-workflow 
-<img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/autoprefixer.png" width="32"/><img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/npm.png" width="32"/><img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/gulp.png" width="32"/><img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/jade.png" width="32"/><img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/sass.png" width="32"/>
+<img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/autoprefixer.png" width="32"/>&nbsp;<img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/npm.png" width="32"/>&nbsp;<img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/gulp.png" width="32"/>&nbsp;<img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/jade.png" width="32"/>&nbsp;<img src="https://github.com/delvallejoni/web-workflow/blob/master/app/images/sass.png" width="32"/>
+
 web-workflow is the structure and workflow that i like to use when i start a new web project using Sass and Jade.
 Compiles scss & jade files with Gulp and use: browser-sync to live reload, sourcemaps to see scss routes on inspect, google-webfonts to import Google Fonts and autoprefixer to autoinsert prefixs.
 ## Gulp
