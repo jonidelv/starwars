@@ -30,6 +30,6 @@ Roboto:500,500italic&subset=greek
 ```
 Change the name of the font you want to export from google fronts and thats it ej: ```Lato:400,800``` and they will link to the index. Then just font-family: 'Lato', font-weight:800;
 
-###Dont like jade?
+###Dont like Jade?
 Remove ```app/jade``` folder and write everything in ```app/index.htm```.
 Also from gulpfile.js remove line 8, 21, 45-57 and ```'jadeCompila'``` from line 14.
