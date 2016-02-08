@@ -8,10 +8,15 @@ Just go to your project path with the console and write ```$gulp```, everything 
 (HTML) Write your html in ```app/jade/index.jade``` and this will compile into ```app/index.html```.
 (CSS) Write your styles in any files inside ```app/scss/*.scss``` and they will compile into ```app/css/style.css``` wich is already linked in the ```index.jade```.
 (JS) Write your scripts in ```app/js/index.js```, this file is already linked in the ```index.jade```.
-###how?
+###How?
 ```
 $ git clone https://github.com/delvallejoni/web-workflow.git 
 $ cd web-workflow
 $ npm install
 $ gulp
 ```
+###Bower
+The project contains a ```bower.json``` but you have to install it globally first in your pc.
+```$ npm install -g bower``` then just go to your project folder and  ```$ bower install bootstrap --save``` and will install Bootstrap or any other framework.
+**You have to add manually the frameworks links to your ```index.jade```** go to ```bower_components/frameworkfolder/ ``` and link the .min.css & .min.js to the ```index.jade```.
+
