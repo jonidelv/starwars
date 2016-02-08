@@ -33,8 +33,3 @@ Change the name of the font you want to export from google fronts and thats it e
 ###Dont like jade?
 Remove ```app/jade``` folder and write everything in ```app/index.htm```.
 Also from gulpfile.js remove line 8, 21, 45-57 and ```'jadeCompila'``` from line 14.
-
-ENJOY!
-
-
-
