@@ -18,5 +18,17 @@ $ gulp
 ###Bower
 The project contains a ```bower.json``` but you have to install it globally first in your pc.
 ```$ npm install -g bower``` then just go to your project folder and  ```$ bower install bootstrap --save``` and will install Bootstrap or any other framework.
-**You have to add manually the frameworks links to your ```index.jade```** go to ```bower_components/frameworkfolder/ ``` and link the .min.css & .min.js to the ```index.jade```.
+**You have to add manually the frameworks links to your ```index.jade```** go to ```bower_components/frameworkfolder/ ``` and link the ```.min.css``` & ```.min.js to the``` ```index.jade```.
+
+###Google Fonts
+```
+# Tab-delimeted format
+Oswald	400,700	latin,latin-ext
+
+# Google format
+Roboto:500,500italic&subset=greek
+```
+Change the name of the font you want to export from google fronts and thats it ej: ```Lato:400,800``` and they will link to the index. Then just font-family: 'Lato', font-weight:800;
+
+
 
