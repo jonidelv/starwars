@@ -17,12 +17,8 @@ $ ./install-dev.sh
 $ gulp
 ```
 ./install-dev.sh will
-Install global dependencies
-sudo npm install -g bower
-sudo npm install -g gulp
-Install local dependencies
-npm install
-bower install
+Install global dependencies: sudo npm install -g bower, sudo npm install -g gulp.
+and Install local dependencies: npm install, bower install.
 
 ###Bower
 The project contains a ```bower.json``` just install the framework or library you want to doing ```$ bower install bootstrap --save``` and will install Bootstrap or any other framework. The library or framework main files will be linked in the index.html automatically by Gulp.
@@ -36,7 +32,3 @@ Oswald	400,700	latin,latin-ext
 Roboto:500,500italic&subset=greek
 ```
 Change the name of the font you want to export from google fronts and thats it ej: ```Lato:400,800``` and they will link to the index. Then just font-family: 'Lato', font-weight:800;
-
-###Dont like Jade?
-Remove ```app/jade``` folder and write everything in ```app/index.html```.
-Also from gulpfile.js remove line 8, 21, 45-57 and ```'jadeCompila'``` from line 14.
