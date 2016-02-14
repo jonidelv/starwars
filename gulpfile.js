@@ -1,11 +1,12 @@
-var gulp         = require('gulp');
-var browserSync  = require('browser-sync').create();
-var sass         = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps   = require('gulp-sourcemaps');
-var plumber      = require('gulp-plumber');
+var gulp           = require('gulp');
+var browserSync    = require('browser-sync').create();
+var sass           = require('gulp-sass');
+var autoprefixer   = require('gulp-autoprefixer');
+var sourcemaps     = require('gulp-sourcemaps');
+var plumber        = require('gulp-plumber');
 var googleWebFonts = require('gulp-google-webfonts');
-var jade = require('gulp-jade');
+var jade           = require('gulp-jade');
+var wiredep        = require('wiredep').stream;
 
 var options = { };
 
@@ -49,12 +50,22 @@ return gulp.src('app/jade/*.jade')
   .pipe(jade({
     pretty: true
   }))
+  .pipe(wiredep())
   .pipe(plumber.stop())
   .pipe(gulp.dest('app'));
 });
 
 //jade watch
 gulp.task('jade-watch', ['jadeCompila']);
+
+
+// wiredep bower
+/*gulp.task('bower', function () {
+  gulp.src('app/index.html')
+    .pipe(wiredep({
+    }))
+    .pipe(gulp.dest('app/'));
+});*/
 
 
 gulp.task('default', ['serve']);
