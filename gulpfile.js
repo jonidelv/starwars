@@ -15,44 +15,45 @@ var options = { };
 gulp.task('serve', ['sass','fonts','jadeCompila'], function() {
 
     browserSync.init({
-        server: "./app"
+        server: './web/build'
     });
 
-    gulp.watch("app/scss/*.scss", ['sass']);
-    gulp.watch("app/jade/*.jade", ['jade-watch']);
-    gulp.watch("app/*.html").on('change', browserSync.reload);
+    gulp.watch('web/src/scss/*.scss', ['sass']);
+    gulp.watch('web/src/jade/*.jade', ['jade-watch']);
+    gulp.watch('web/src/js/**/*.js', ['sass']);
+    gulp.watch('web/build/*.html').on('change', browserSync.reload);
 });
 
 // Compile sass into CSS
 gulp.task('sass', function() {
-    return gulp.src("app/scss/*.scss")
+    return gulp.src('web/src/scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest("app/css"))
+        .pipe(gulp.dest('web/build/css'))
         .pipe(browserSync.stream());
         googleFonts ();
 });
 
 // googleFonts task
 gulp.task('fonts', function () {
-return gulp.src('app/fonts/fonts.list')
+return gulp.src('web/src/fonts/fonts.list')
   .pipe(googleWebFonts(options))
-  .pipe(gulp.dest('app/fonts'))
+  .pipe(gulp.dest('web/build/css'))
   ;
 });
 
 // compilar jade
 gulp.task('jadeCompila', function () {
-return gulp.src('app/jade/*.jade')
+return gulp.src('web/src/jade/*.jade')
   .pipe(plumber())
   .pipe(jade({
     pretty: true
   }))
   .pipe(wiredep())
   .pipe(plumber.stop())
-  .pipe(gulp.dest('app'));
+  .pipe(gulp.dest('web/build/'));
 });
 
 //jade watch
@@ -61,10 +62,10 @@ gulp.task('jade-watch', ['jadeCompila']);
 
 // wiredep bower
 /*gulp.task('bower', function () {
-  gulp.src('app/index.html')
+  gulp.src('web/index.html')
     .pipe(wiredep({
     }))
-    .pipe(gulp.dest('app/'));
+    .pipe(gulp.dest('web/'));
 });*/
 
 
