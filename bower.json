@@ -16,5 +16,6 @@
     "tests"
   ],
   "dependencies": {
+    "material-design-lite": "^1.1.1"
   }
 }
