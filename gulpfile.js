@@ -8,15 +8,21 @@ var googleWebFonts = require('gulp-google-webfonts');
 var jade           = require('gulp-jade');
 var wiredep        = require('wiredep').stream;
 var inject         = require('gulp-inject');
+var runSequence    = require('run-sequence').use(gulp);
 
 var options = { };
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass','fonts','jadeCompila','copy','bower'], function() {
+gulp.task('serve', ['sass','fonts','jadeCompila','runsequence'], function() {
 
     browserSync.init({
-        server: './web/build'
+        server: {
+          baseDir: './web/build',
+          routes: {
+            '/bower_components': './bower_components'
+          }
+        }
     });
 
     gulp.watch('web/src/scss/*.scss', ['sass']);
@@ -34,7 +40,6 @@ gulp.task('sass', function() {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('web/build/css'))
         .pipe(browserSync.stream());
-        googleFonts ();
 });
 
 // googleFonts task
@@ -64,6 +69,7 @@ gulp.task('jade-watch', ['jadeCompila']);
 // wiredep bower
 gulp.task('bower', function () {
   gulp.src('web/build/index.html')
+
     .pipe(wiredep({
     }))
     .pipe(gulp.dest('web/build'));
@@ -72,10 +78,23 @@ gulp.task('bower', function () {
 //copy documents from app
 gulp.task('copy', function() {
     gulp.src(['web/src/app/**/*'])
-    .pipe(gulp.dest('web/build/app/'))
+    .pipe(gulp.dest('web/build/app/'));
 });
 
 //inject
+gulp.task('inject', function () {
+  var target = gulp.src('./web/build/index.html');
+  var sources = gulp.src(['./web/src/**/*.js'], {read: false});
+
+  return target.pipe(inject(sources))
+    .pipe(gulp.dest('./web/build'));
+});
+
+//run sequence
+gulp.task('runsequence', function () {
+  runSequence('copy','bower','inject');
+});
+
 
 
 gulp.task('default', ['serve']);

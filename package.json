@@ -17,9 +17,10 @@
     "gulp-jade": "^1.1.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.1.1",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-sourcemaps": "^1.6.0",
+    "run-sequence": "^1.1.5",
+    "wiredep": "^3.0.0"
   },
   "dependencies": {
-    "wiredep": "^3.0.0"
   }
 }
