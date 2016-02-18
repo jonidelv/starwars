@@ -8,13 +8,13 @@ var googleWebFonts = require('gulp-google-webfonts');
 var jade           = require('gulp-jade');
 var wiredep        = require('wiredep').stream;
 var inject         = require('gulp-inject');
-var runSequence    = require('run-sequence').use(gulp);
+var runSequence    = require('run-sequence');
 
 var options = { };
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass','fonts','jadeCompila','runsequence'], function() {
+gulp.task('serve', ['sass','fonts','jadeCompila','copy','bower'], function() {
 
     browserSync.init({
         server: {
@@ -27,7 +27,6 @@ gulp.task('serve', ['sass','fonts','jadeCompila','runsequence'], function() {
 
     gulp.watch('web/src/scss/*.scss', ['sass']);
     gulp.watch('web/src/jade/*.jade', ['jade-watch']);
-    gulp.watch('web/src/app/**/*', ['copy']);
     gulp.watch('web/build/*.html').on('change', browserSync.reload);
 });
 
@@ -81,20 +80,11 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('web/build/app/'));
 });
 
-//inject
+//iject run gulp inject
 gulp.task('inject', function () {
-  var target = gulp.src('./web/build/index.html');
-  var sources = gulp.src(['./web/src/**/*.js'], {read: false});
-
-  return target.pipe(inject(sources))
+  gulp.src('./web/build/index.html')
+    .pipe(inject(gulp.src(['web/build/app/**/*.module.js','web/build/app/**/*.js'], {read: false}), {relative: true}))
     .pipe(gulp.dest('./web/build'));
 });
-
-//run sequence
-gulp.task('runsequence', function () {
-  runSequence('copy','bower','inject');
-});
-
-
 
 gulp.task('default', ['serve']);

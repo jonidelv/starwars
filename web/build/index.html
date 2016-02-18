@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <title>new app</title>
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/reset.css" charset="utf-8">
     <link rel="stylesheet" href="css/fonts/fonts.css">
     <!-- bower:css-->
+    <link rel="stylesheet" href="../../bower_components/material-design-lite/material.min.css" />
     <!-- endbower-->
     <link rel="stylesheet" href="css/style.css" media="screen" charset="utf-8">
   </head>
@@ -19,19 +20,37 @@
       <div class="topdata">
         <p><strong>Planets, Spaceships, Vehicles, People, Films and Species</strong><br>From all <strong>SEVEN </strong>Star Wars films<br>Now with The Force Awakens data</p>
       </div>
-      <div class="inputdata">
+      <div HomeController as homectr class="inputdata">
         <h3>Try it now!</h3>
         <div class="dataenter">
-          <form name="form" ng-submit="" class="input-container">
-            <input type="text" placeholder="Type yo stuff here" name="" ng-model="" required="">
+          <form name="form" class="input-container">
+            <select>
+              <option value="" disabled selected hidden>Select</option>
+              <option ng-repeat="select in homectr.selects track by $index" value="{{select.name}}">{{select.name}}</option>
+            </select>
+            <input type="text" placeholder="Type here">
             <button ng-disabled="form.$invalid" class="add">Request</button>
           </form>
         </div>
       </div>
     </section>
     <!-- bower:js-->
+    <script src="../../bower_components/material-design-lite/material.min.js"></script>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower-->
     <!-- inject:js-->
+    <script src="app/app.module.js"></script>
+    <script src="app/core/core.module.js"></script>
+    <script src="app/modules/films/films.module.js"></script>
+    <script src="app/modules/home/home.module.js"></script>
+    <script src="app/modules/people/people.module.js"></script>
+    <script src="app/modules/planets/planets.module.js"></script>
+    <script src="app/modules/species/species.module.js"></script>
+    <script src="app/modules/starships/starships.module.js"></script>
+    <script src="app/modules/vehicles/vehicles.module.js"></script>
+    <script src="app/modules/views.modules.js"></script>
+    <script src="app/modules/home/home.controller.js"></script>
     <!-- endinject-->
   </body>
 </html>

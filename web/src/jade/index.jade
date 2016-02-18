@@ -1,5 +1,5 @@
 doctype html
-html(lang="en")
+html(lang="en", ng-app='app')
   head
     meta(charset='utf-8')
     title new app
@@ -23,11 +23,14 @@ html(lang="en")
           | Star Wars films
           br
           | Now with The Force Awakens data
-      .inputdata
+      .inputdata(HomeController as homectr)
         h3 Try it now!
         .dataenter
-          form.input-container(name='form', ng-submit='')
-            input(type='text', placeholder='Type yo stuff here', name='', ng-model='', required='')
+          form.input-container(name='form')
+            select
+              option(value='', disabled selected hidden) Select
+              option(ng-repeat="select in homectr.selects track by $index", value='{{select.name}}') {{select.name}}
+            input(type='text', placeholder='Type here')
             button.add(ng-disabled='form.$invalid')
               |Request
     
