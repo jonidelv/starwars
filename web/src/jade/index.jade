@@ -10,7 +10,26 @@ html(lang="en")
     // endbower
     link(rel='stylesheet', href='css/style.css', media='screen', charset='utf-8')
   body
-    h1 Hello, world! new app
+    header
+      h1.title Star Wars
+      h2.subtitle All the Star Wars data you've ever wanted
+    section.container
+      .topdata
+        p
+          strong Planets, Spaceships, Vehicles, People, Films and Species
+          br
+          | From all 
+          strong SEVEN 
+          | Star Wars films
+          br
+          | Now with The Force Awakens data
+      .inputdata
+        h3 Try it now!
+        .dataenter
+          form.input-container(name='form', ng-submit='')
+            input(type='text', placeholder='Type yo stuff here', name='', ng-model='', required='')
+            button.add(ng-disabled='form.$invalid')
+              |Request
     
     // bower:js
     // endbower

@@ -1,10 +1,55 @@
 body {
-  background-color: lightgrey;
-  h1 {
-    font-family: 'Roboto';
-    color: purple;
-    font-size: 35px;
-    text-align: center;
-    line-height: 100vh
+  background-color: $background-color;
+  font-family: 'Roboto';
+
+  header {
+    background-color: $header-color;
+    height: 200px;
+    width: 100%;
+
+    .title {
+      color: $yellow-color;
+      font-size: 63px;
+      font-weight: 400;
+      padding-top: 50px;
+      text-align: center;
+    }
+
+    .subtitle {
+      color: $yellow-color;
+      font-size: 23px;
+      font-weight: 200;
+      text-align: center;
+    }
+  }
+
+  .container {
+    .topdata {
+      border-bottom: 1px solid $black-color;
+      color: $grey-color;
+      line-height: 30px;
+      padding: 40px;
+      text-align: center;
+
+      strong {
+        font-weight: bold;
+      }
+    }
+
+    .inputdata {
+      h3 {
+        color: $grey-color;
+        font-size: 28px;
+        margin-top: 60px;
+        text-align: center;
+      }
+
+      .dataenter {
+        .input-container {
+          margin-top: 30px;
+          text-align: center;
+        }
+      }
+    }
   }
 }
