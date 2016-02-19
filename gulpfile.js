@@ -8,13 +8,13 @@ var googleWebFonts = require('gulp-google-webfonts');
 var jade           = require('gulp-jade');
 var wiredep        = require('wiredep').stream;
 var inject         = require('gulp-inject');
-var runSequence    = require('run-sequence');
+var del            = require('del');
 
 var options = { };
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass','fonts','jadeCompila','copy','bower'], function() {
+gulp.task('serve', ['sass','fonts','jadeCompila',], function() {
 
     browserSync.init({
         server: {
@@ -25,8 +25,8 @@ gulp.task('serve', ['sass','fonts','jadeCompila','copy','bower'], function() {
         }
     });
 
-    gulp.watch('web/src/scss/*.scss', ['sass']);
-    gulp.watch('web/src/jade/*.jade', ['jade-watch']);
+    gulp.watch('web/**/*.scss', ['sass']);
+    gulp.watch('web/src/**/*.jade', ['jade-watch']);
     gulp.watch('web/build/*.html').on('change', browserSync.reload);
 });
 
@@ -45,13 +45,12 @@ gulp.task('sass', function() {
 gulp.task('fonts', function () {
 return gulp.src('web/src/fonts/fonts.list')
   .pipe(googleWebFonts(options))
-  .pipe(gulp.dest('web/build/css/fonts'))
-  ;
+  .pipe(gulp.dest('web/build/css/fonts'));
 });
 
 // compilar jade
 gulp.task('jadeCompila', function () {
-return gulp.src('web/src/jade/*.jade')
+return gulp.src('web/src/**/*.jade')
   .pipe(plumber())
   .pipe(jade({
     pretty: true
@@ -64,27 +63,35 @@ return gulp.src('web/src/jade/*.jade')
 //jade watch
 gulp.task('jade-watch', ['jadeCompila']);
 
+//iject gulp
+gulp.task('inject', function () {
+  gulp.src('./web/build/index.html')
+  //  .pipe(wiredep({
+  //  }))
+    .pipe(inject(gulp.src(['web/build/app/**/*.module.js','web/build/app/**/*.js'], {read: false}), {relative: true}))
+    .pipe(gulp.dest('./web/build'));
+});
 
 // wiredep bower
 gulp.task('bower', function () {
   gulp.src('web/build/index.html')
-
     .pipe(wiredep({
     }))
     .pipe(gulp.dest('web/build'));
 });
 
+//remove
+gulp.task('remove', function () {
+  del(['web/build/app/**/*']);
+});
+
 //copy documents from app
-gulp.task('copy', function() {
-    gulp.src(['web/src/app/**/*'])
+gulp.task('copy', ['remove'],function() {
+    gulp.src(['web/src/app/**/*.js', 'web/src/app/**/*.scss'])
     .pipe(gulp.dest('web/build/app/'));
 });
 
-//iject run gulp inject
-gulp.task('inject', function () {
-  gulp.src('./web/build/index.html')
-    .pipe(inject(gulp.src(['web/build/app/**/*.module.js','web/build/app/**/*.js'], {read: false}), {relative: true}))
-    .pipe(gulp.dest('./web/build'));
-});
+gulp.task('clean', ['remove','copy']);
+
 
 gulp.task('default', ['serve']);
