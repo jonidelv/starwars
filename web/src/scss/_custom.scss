@@ -19,6 +19,7 @@ body {
       color: $yellow-color;
       font-size: 23px;
       font-weight: 200;
+      margin-top: 10px;
       text-align: center;
     }
   }
@@ -51,21 +52,28 @@ body {
 
           .center-input {
             display: inline-block;
-            width: 350px;
+            width: 400px;
+
+            .btn {
+              border-radius: 0;
+            }
           }
 
           .left-input {
+            border-radius: 0;
             display: inline-block;
             position: relative;
             top: 1px;
-            width: 100px;
+            width: 120px;
           }
 
           .right-input {
+            border-radius: 0;
             display: inline-block;
+            left: 1px;
             position: relative;
             top: 1px;
-            width: 100px;
+            width: 120px;
           }
         }
       }
