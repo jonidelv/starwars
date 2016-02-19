@@ -18,15 +18,15 @@
     </header>
     <section class="container">
       <div class="topdata">
-        <p><strong>Planets, Spaceships, Vehicles, People, Films and Speciess</strong><br>From all <strong>SEVEN s</strong>Star Wars films<br>Now with The Force Awakens data</p>
+        <p><strong>Planets, Spaceships, Vehicles, People, Films and Species</strong><br>From all <strong>SEVEN s</strong>Star Wars films<br>Now with The Force Awakens data</p>
       </div>
-      <div HomeController as homectr class="inputdata">
+      <div HomeController as vm class="inputdata">
         <h3>Try it now!</h3>
         <div class="dataenter">
           <form name="form" class="input-container">
             <select>
               <option value="" disabled selected hidden>Select</option>
-              <option ng-repeat="select in homectr.selects track by $index" value="{{select.names}}">{{select.names}}aaaa</option>
+              <option ng-repeat="select in vm.selects track by $index" value="{{select.names}}">{{select.names}}</option>
             </select>
             <input type="text" placeholder="Type here">
             <button ng-disabled="form.$invalid" class="add">Request</button>

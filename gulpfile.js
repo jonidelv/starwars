@@ -14,7 +14,7 @@ var options = { };
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass','fonts','jadeCompila','bower','inject'], function() {
+gulp.task('serve', ['sass','fonts','clean','jadeCompila','bower','inject'], function() {
 
     browserSync.init({
         server: {
@@ -26,9 +26,10 @@ gulp.task('serve', ['sass','fonts','jadeCompila','bower','inject'], function() {
     });
 
     gulp.watch('web/**/*.scss', ['sass']);
-    gulp.watch('web/src/**/*.jade', ['jade-watch','inject']);
+    gulp.watch('web/src/**/*.jade', ['clean','jade-watch','inject']);
     gulp.watch('bower_components/**', ['gulp']);
     gulp.watch('web/build/*.html').on('change', browserSync.reload);
+    gulp.watch('web/build/app/**/*.js').on('change', browserSync.reload);
 });
 
 // Compile sass into CSS
@@ -49,8 +50,15 @@ return gulp.src('web/src/fonts/fonts.list')
   .pipe(gulp.dest('web/build/css/fonts'));
 });
 
+//del documents from app
+gulp.task('clean',function() {
+   del(['web/build/index.html']);
+   //gulp.src(['web/src/app/**/*.js', 'web/src/app/**/*.scss'])
+  //.pipe(gulp.dest('web/build/app/'));
+});
+
 // compilar jade
-gulp.task('jadeCompila', function () {
+gulp.task('jadeCompila', ['clean'], function () {
 return gulp.src('web/src/**/*.jade')
   .pipe(plumber())
   .pipe(jade({
@@ -63,16 +71,8 @@ return gulp.src('web/src/**/*.jade')
 //jade watch
 gulp.task('jade-watch', ['jadeCompila']);
 
-
-//copy documents from app
-//gulp.task('clean',function() {
-//    del(['web/build/app/**/*']);
-//    gulp.src(['web/src/app/**/*.js', 'web/src/app/**/*.scss'])
-//    .pipe(gulp.dest('web/build/app/'));
-//});
-
 //iject gulp
-gulp.task('inject', function () {
+gulp.task('inject', ['jadeCompila'], function () {
   gulp.src('./web/build/index.html')
     .pipe(inject(gulp.src(['web/build/bowerfiles/**/*.js','web/build/bowerfiles/**/*.css',
     'web/build/app/**/*.module.js','web/build/app/**/*.js'], {read: false}), {relative: true}))

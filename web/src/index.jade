@@ -24,13 +24,13 @@ html(lang="en", ng-app='app')
           | Star Wars films
           br
           | Now with The Force Awakens data
-      .inputdata(HomeController as homectr)
+      .inputdata(HomeController as vm)
         h3 Try it now!
         .dataenter
           form.input-container(name='form')
             select
               option(value='', disabled selected hidden) Select
-              option(ng-repeat="select in homectr.selects track by $index", value='{{select.names}}') {{select.names}}aaaa
+              option(ng-repeat="select in vm.selects track by $index", value='{{select.names}}') {{select.names}}
             input(type='text', placeholder='Type here')
             button.add(ng-disabled='form.$invalid')
               |Request
