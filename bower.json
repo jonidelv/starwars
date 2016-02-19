@@ -18,6 +18,8 @@
   "dependencies": {
     "angular": "^1.5.0",
     "angular-ui-router": "^0.2.18",
-    "animate.css": "^3.5.1"
+    "animate.css": "^3.5.1",
+    "ui-select": "angular-ui-select#^0.14.9",
+    "angular-sanitize": "^1.5.0"
   }
 }

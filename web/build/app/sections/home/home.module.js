@@ -3,6 +3,7 @@
 
     angular
         .module('app.home', [
-
+          'ui.select',
+          'ngSanitize'
         ]);
 })();

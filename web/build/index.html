@@ -5,9 +5,11 @@
     <title>new app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/fonts/fonts.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
     <!-- inject:css-->
     <link rel="stylesheet" href="bowerfiles/animate.css">
     <link rel="stylesheet" href="bowerfiles/animate.css/animate.css">
+    <link rel="stylesheet" href="bowerfiles/ui-select/dist/select.css">
     <!-- endinject-->
     <link rel="stylesheet" href="css/index.css" media="screen" charset="utf-8">
   </head>
@@ -20,34 +22,39 @@
       <div class="topdata">
         <p><strong>Planets, Spaceships, Vehicles, People, Films and Species</strong><br>From all <strong>SEVEN s</strong>Star Wars films<br>Now with The Force Awakens data</p>
       </div>
-      <div HomeController as vm class="inputdata">
+      <div ng-controller="HomeController as vm" class="inputdata">
         <h3>Try it now!</h3>
         <div class="dataenter">
           <form name="form" class="input-container">
-            <select>
+            <select ng-model="vm.category" class="form-control left-input">
               <option value="" disabled selected hidden>Select</option>
-              <option ng-repeat="select in vm.selects track by $index" value="{{select.names}}">{{select.names}}</option>
+              <option ng-repeat="option in vm.selects.names" value="{{option}}">{{option}}</option>
             </select>
-            <input type="text" placeholder="Type here">
-            <button ng-disabled="form.$invalid" class="add">Request</button>
+            <ui-select ng-model="vm.selectedItem" class="center-input">
+              <ui-select-match><span ng-bind="$select.selected.name"></span></ui-select-match>
+              <ui-select-choices repeat="item in (vm.items | filter: $select.search) track by item.id"><span ng-bind="item.name"></span></ui-select-choices>
+            </ui-select>
+            <button ng-disabled="form.$invalid" class="add form-control right-input">Request</button>
           </form>
         </div>
       </div>
     </section>
     <!-- inject:js-->
     <script src="bowerfiles/angular/angular.js"></script>
+    <script src="bowerfiles/angular-sanitize/angular-sanitize.js"></script>
     <script src="bowerfiles/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bowerfiles/ui-select/dist/select.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/core/core.module.js"></script>
-    <script src="app/modules/films/films.module.js"></script>
-    <script src="app/modules/home/home.module.js"></script>
-    <script src="app/modules/people/people.module.js"></script>
-    <script src="app/modules/planets/planets.module.js"></script>
-    <script src="app/modules/species/species.module.js"></script>
-    <script src="app/modules/starships/starships.module.js"></script>
-    <script src="app/modules/vehicles/vehicles.module.js"></script>
-    <script src="app/modules/views.modules.js"></script>
-    <script src="app/modules/home/home.controller.js"></script>
+    <script src="app/sections/films/films.module.js"></script>
+    <script src="app/sections/home/home.module.js"></script>
+    <script src="app/sections/people/people.module.js"></script>
+    <script src="app/sections/planets/planets.module.js"></script>
+    <script src="app/sections/species/species.module.js"></script>
+    <script src="app/sections/starships/starships.module.js"></script>
+    <script src="app/sections/vehicles/vehicles.module.js"></script>
+    <script src="app/sections/views.modules.js"></script>
+    <script src="app/sections/home/home.controller.js"></script>
     <!-- endinject-->
   </body>
 </html>

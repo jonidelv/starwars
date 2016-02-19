@@ -5,6 +5,7 @@ html(lang="en", ng-app='app')
     title new app
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='css/fonts/fonts.css')
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css')
     
     // inject:css
     // endinject
@@ -24,15 +25,19 @@ html(lang="en", ng-app='app')
           | Star Wars films
           br
           | Now with The Force Awakens data
-      .inputdata(HomeController as vm)
+      .inputdata(ng-controller="HomeController as vm")
         h3 Try it now!
         .dataenter
-          form.input-container(name='form')
-            select
-              option(value='', disabled selected hidden) Select
-              option(ng-repeat="select in vm.selects track by $index", value='{{select.names}}') {{select.names}}
-            input(type='text', placeholder='Type here')
-            button.add(ng-disabled='form.$invalid')
+          form.input-container(name="form")
+            select.form-control.left-input(ng-model="vm.category")
+              option(value="", disabled selected hidden) Select
+              option(ng-repeat="option in vm.selects.names" value="{{option}}") {{option}}
+            ui-select.center-input(ng-model='vm.selectedItem',)
+              ui-select-match
+                span(ng-bind='$select.selected.name')
+              ui-select-choices(repeat='item in (vm.items | filter: $select.search) track by item.id')
+                span(ng-bind='item.name')
+            button.add.form-control.right-input(ng-disabled='form.$invalid')
               |Request
     
     // inject:js

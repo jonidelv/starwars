@@ -27,7 +27,7 @@ gulp.task('serve', ['sass','fonts','clean','jadeCompila','bower','inject'], func
 
     gulp.watch('web/**/*.scss', ['sass']);
     gulp.watch('web/src/**/*.jade', ['clean','jade-watch','inject']);
-    gulp.watch('bower_components/**', ['gulp']);
+    gulp.watch('bower_components/**', ['default']);
     gulp.watch('web/build/*.html').on('change', browserSync.reload);
     gulp.watch('web/build/app/**/*.js').on('change', browserSync.reload);
 });
