@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>new app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/reset.css" charset="utf-8">
     <link rel="stylesheet" href="css/fonts/fonts.css">
-    <!-- bower:css-->
-    <!-- endbower-->
-    <link rel="stylesheet" href="css/style.css" media="screen" charset="utf-8">
+    <!-- inject:css-->
+    <link rel="stylesheet" href="bowerfiles/animate.css">
+    <link rel="stylesheet" href="bowerfiles/animate.css/animate.css">
+    <!-- endinject-->
+    <link rel="stylesheet" href="css/index.css" media="screen" charset="utf-8">
   </head>
   <body>
     <header>
@@ -17,7 +18,7 @@
     </header>
     <section class="container">
       <div class="topdata">
-        <p><strong>Planets, Spaceships, Vehicles, People, Films and Species</strong><br>From all <strong>SEVEN </strong>Star Wars films<br>Now with The Force Awakens data</p>
+        <p><strong>Planets, Spaceships, Vehicles, People, Films and Speciess</strong><br>From all <strong>SEVEN s</strong>Star Wars films<br>Now with The Force Awakens data</p>
       </div>
       <div HomeController as homectr class="inputdata">
         <h3>Try it now!</h3>
@@ -25,7 +26,7 @@
           <form name="form" class="input-container">
             <select>
               <option value="" disabled selected hidden>Select</option>
-              <option ng-repeat="select in homectr.selects track by $index" value="{{select.name}}">{{select.name}}</option>
+              <option ng-repeat="select in homectr.selects track by $index" value="{{select.names}}">{{select.names}}aaaa</option>
             </select>
             <input type="text" placeholder="Type here">
             <button ng-disabled="form.$invalid" class="add">Request</button>
@@ -33,11 +34,9 @@
         </div>
       </div>
     </section>
-    <!-- bower:js-->
-    <script src="../../bower_components/angular/angular.js"></script>
-    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- endbower-->
     <!-- inject:js-->
+    <script src="bowerfiles/angular/angular.js"></script>
+    <script src="bowerfiles/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/core/core.module.js"></script>
     <script src="app/modules/films/films.module.js"></script>

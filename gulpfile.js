@@ -6,15 +6,15 @@ var sourcemaps     = require('gulp-sourcemaps');
 var plumber        = require('gulp-plumber');
 var googleWebFonts = require('gulp-google-webfonts');
 var jade           = require('gulp-jade');
-var wiredep        = require('wiredep').stream;
 var inject         = require('gulp-inject');
 var del            = require('del');
+var mainBowerFiles = require('gulp-main-bower-files');
 
 var options = { };
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass','fonts','jadeCompila',], function() {
+gulp.task('serve', ['sass','fonts','jadeCompila','bower','inject'], function() {
 
     browserSync.init({
         server: {
@@ -26,7 +26,8 @@ gulp.task('serve', ['sass','fonts','jadeCompila',], function() {
     });
 
     gulp.watch('web/**/*.scss', ['sass']);
-    gulp.watch('web/src/**/*.jade', ['jade-watch']);
+    gulp.watch('web/src/**/*.jade', ['jade-watch','inject']);
+    gulp.watch('bower_components/**', ['gulp']);
     gulp.watch('web/build/*.html').on('change', browserSync.reload);
 });
 
@@ -55,7 +56,6 @@ return gulp.src('web/src/**/*.jade')
   .pipe(jade({
     pretty: true
   }))
-  //.pipe(wiredep())
   .pipe(plumber.stop())
   .pipe(gulp.dest('web/build/'));
 });
@@ -63,35 +63,28 @@ return gulp.src('web/src/**/*.jade')
 //jade watch
 gulp.task('jade-watch', ['jadeCompila']);
 
+
+//copy documents from app
+//gulp.task('clean',function() {
+//    del(['web/build/app/**/*']);
+//    gulp.src(['web/src/app/**/*.js', 'web/src/app/**/*.scss'])
+//    .pipe(gulp.dest('web/build/app/'));
+//});
+
 //iject gulp
 gulp.task('inject', function () {
   gulp.src('./web/build/index.html')
-  //  .pipe(wiredep({
-  //  }))
-    .pipe(inject(gulp.src(['web/build/app/**/*.module.js','web/build/app/**/*.js'], {read: false}), {relative: true}))
+    .pipe(inject(gulp.src(['web/build/bowerfiles/**/*.js','web/build/bowerfiles/**/*.css',
+    'web/build/app/**/*.module.js','web/build/app/**/*.js'], {read: false}), {relative: true}))
     .pipe(gulp.dest('./web/build'));
 });
 
-// wiredep bower
-gulp.task('bower', function () {
-  gulp.src('web/build/index.html')
-    .pipe(wiredep({
-    }))
-    .pipe(gulp.dest('web/build'));
+
+//copy bower main files
+gulp.task('bower', function(){
+    return gulp.src('bower.json')
+        .pipe(mainBowerFiles( ))
+        .pipe(gulp.dest('web/build/bowerfiles'));
 });
-
-//remove
-gulp.task('remove', function () {
-  del(['web/build/app/**/*']);
-});
-
-//copy documents from app
-gulp.task('copy', ['remove'],function() {
-    gulp.src(['web/src/app/**/*.js', 'web/src/app/**/*.scss'])
-    .pipe(gulp.dest('web/build/app/'));
-});
-
-gulp.task('clean', ['remove','copy']);
-
 
 gulp.task('default', ['serve']);

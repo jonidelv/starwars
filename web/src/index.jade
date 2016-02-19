@@ -4,11 +4,12 @@ html(lang="en", ng-app='app')
     meta(charset='utf-8')
     title new app
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='css/reset.css', charset='utf-8')
     link(rel='stylesheet', href='css/fonts/fonts.css')
-    // bower:css
-    // endbower
-    link(rel='stylesheet', href='css/style.css', media='screen', charset='utf-8')
+    
+    // inject:css
+    // endinject
+    
+    link(rel='stylesheet', href='css/index.css', media='screen', charset='utf-8')
   body
     header
       h1.title Star Wars
@@ -19,7 +20,7 @@ html(lang="en", ng-app='app')
           strong Planets, Spaceships, Vehicles, People, Films and Species
           br
           | From all 
-          strong SEVEN 
+          strong SEVEN s
           | Star Wars films
           br
           | Now with The Force Awakens data
@@ -29,13 +30,10 @@ html(lang="en", ng-app='app')
           form.input-container(name='form')
             select
               option(value='', disabled selected hidden) Select
-              option(ng-repeat="select in homectr.selects track by $index", value='{{select.name}}') {{select.name}}
+              option(ng-repeat="select in homectr.selects track by $index", value='{{select.names}}') {{select.names}}aaaa
             input(type='text', placeholder='Type here')
             button.add(ng-disabled='form.$invalid')
               |Request
-    
-    // bower:js
-    // endbower
     
     // inject:js
     // endinject
