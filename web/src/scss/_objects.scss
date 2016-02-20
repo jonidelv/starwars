@@ -1,0 +1,46 @@
+$inputc:  #ffe300;
+.ui-select-container[theme="select2"].direction-up.select2-dropdown-open .ui-select-match {
+    border-bottom-color:  #ffe300;
+}
+/* Helper class to show styles when focus */
+.selectize-input.selectize-focus{
+  border-color:  #ffe300 !important;
+}
+
+/* Helper class to show styles when focus */
+.btn-default-focus {
+  color: #333;
+  background-color: #EBEBEB;
+  border-color: #ADADAD;
+  text-decoration: none;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px  rgba(255, 227, 0, 0.7);
+}
+
+.ui-select-multiple .ui-select-match-item.dropping-before:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  height: 100%;
+  margin-right: 2px;
+  border-left: 1px solid  #ffe300;
+}
+
+.ui-select-multiple .ui-select-match-item.dropping-after:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  height: 100%;
+  margin-left: 2px;
+  border-right: 1px solid  #ffe300;
+}
+
+.ui-select-bootstrap .ui-select-choices-row.active>a {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    background-color:  #ffe300;
+}
