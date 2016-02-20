@@ -15,28 +15,28 @@
   </head>
   <body>
     <header>
-      <h1 class="title">Star Wars</h1>
+      <div class="title"></div>
       <h2 class="subtitle">All the Star Wars data you've ever wanted</h2>
     </header>
-    <section class="container">
+    <section class="datacontainer">
       <div class="topdata">
-        <p><strong>Planets, Spaceships, Vehicles, People, Films and Species</strong><br>From all <strong>SEVEN s</strong>Star Wars films<br>Now with The Force Awakens data</p>
+        <p><strong>Planets, Spaceships, Vehicles, People, Films and Species</strong><br>From all <strong>SEVEN </strong>Star Wars films<br>Now with The Force Awakens data</p>
       </div>
       <div ng-controller="HomeController as vm" class="inputdata">
         <h3>Try it now!</h3>
         <div class="dataenter">
           <form name="form" class="input-container">
-            <select ng-model="vm.category" class="form-control left-input">
+            <select ng-model="vm.category" ng-options="option for option in vm.selects.names" ng-change="vm.onSelectChange(vm.category)" class="form-control left-input">
               <option value="" disabled selected hidden>Select</option>
-              <option ng-repeat="option in vm.selects.names" value="{{option}}">{{option}}</option>
             </select>
-            <ui-select ng-model="vm.selectedItem" style="border-radius: 0;" class="center-input">
-              <ui-select-match><span ng-bind="$select.selected.name"></span></ui-select-match>
-              <ui-select-choices repeat="item in (vm.items | filter: $select.search) track by item.id" style="border-radius: 0;"><span ng-bind="item.name"></span></ui-select-choices>
+            <ui-select ng-model="vm.selectedItem" ng-disabled="!vm.category" class="center-input">
+              <ui-select-match placeholder="{{ vm.placeholder() }}"><span ng-bind="$select.selected.name"></span></ui-select-match>
+              <ui-select-choices repeat="item.name as item in (vm.items | filter: $select.search)"><span ng-bind="item.name"></span></ui-select-choices>
             </ui-select>
-            <button ng-disabled="form.$invalid" class="add form-control right-input">Request</button>
+            <button ng-disabled="!vm.selectedItem" class="add form-control right-input">Request</button>
           </form>
         </div>
+        <!--vm.loading ? 'Loading items' : 'Enter a category'-->
       </div>
     </section>
     <!-- inject:js-->

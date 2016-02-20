@@ -2,24 +2,37 @@
     'use strict';
 
     angular
-        .module('app.home')
-        .controller('HomeController', HomeController);
+      .module('app.home')
+      .controller('HomeController', HomeController);
 
-    function HomeController() {
-        var vm = this;
-        vm.selects =
-          {
-            names: ['films', 'people', 'planets', 'species', 'starships', 'vehicles']
-          };
+    HomeController.$inject = ['swapi'];
 
-          vm.items = [
-              {id: 1, name: 'first'},
-              {id: 2, name: 'second'},
-              {id: 3, name: 'third'},
-              {id: 4, name: 'fourth'},
-              {id: 5, name: 'fifth'},
-          ];
-          vm.selectedItem = vm.items[0];
-    }
+    function HomeController(swapi) {
+      var vm = this;
+      vm.selects = {
+        names: ['Films', 'People', 'Planets', 'Species', 'Starships', 'Vehicles']
+      };
+      vm.items = [];
+
+      vm.onSelectChange = function(option) {
+        vm.loading = true;
+        swapi[option.toLowerCase()].all()
+          .then( function(response) {
+              vm.items = response.results;
+              vm.loading = false;
+          });
+      }
+
+      vm.placeholder = function(){
+        if (!vm.category) {
+            return 'Select a category';
+        }
+        if (vm.category && vm.loading) {
+          return 'Loading wait 1 sec...';
+        } else {
+          return 'Start typing the '+vm.category;
+        }
+      }
+  }
 
 })();

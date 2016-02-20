@@ -4,32 +4,38 @@ body {
 
   header {
     background-color: $header-color;
-    height: 200px;
+    height: 210px;
     width: 100%;
 
     .title {
-      color: $yellow-color;
-      font-size: 63px;
-      font-weight: 400;
-      padding-top: 50px;
-      text-align: center;
+      background-image: url('../img/logo.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 170px;
     }
 
     .subtitle {
       color: $yellow-color;
       font-size: 23px;
       font-weight: 200;
-      margin-top: 10px;
+      margin-top: -10px;
       text-align: center;
     }
   }
 
-  .container {
+  .datacontainer {
+    background-image: url('../img/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
     .topdata {
       border-bottom: 1px solid $black-color;
       color: $grey-color;
       line-height: 30px;
-      padding: 40px;
+      padding: 15px;
       text-align: center;
 
       strong {
@@ -40,7 +46,7 @@ body {
     .inputdata {
       h3 {
         color: $grey-color;
-        font-size: 28px;
+        font-size: 35px;
         margin-top: 60px;
         text-align: center;
       }
@@ -54,26 +60,46 @@ body {
             display: inline-block;
             width: 400px;
 
+            .form-control {
+              border-radius: 0;
+            }
+
             .btn {
               border-radius: 0;
             }
           }
 
           .left-input {
+            appearance: none;
             border-radius: 0;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
             display: inline-block;
             position: relative;
             top: 1px;
             width: 120px;
+            left: 4px;
+            position: relative;
+            background-color: #41464d;
+            border-color: #fff;;
+            color: #fff;
+            text-indent: 27px;
+            cursor: pointer;
           }
 
           .right-input {
             border-radius: 0;
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
             display: inline-block;
             left: 1px;
             position: relative;
             top: 1px;
             width: 120px;
+            left: -4px;
+            background-color: #42474d;
+            border-color: #fff;
+            color: #fff;
           }
         }
       }

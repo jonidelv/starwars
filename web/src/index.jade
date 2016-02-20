@@ -13,15 +13,15 @@ html(lang="en", ng-app='app')
     link(rel='stylesheet', href='css/index.css', media='screen', charset='utf-8')
   body
     header
-      h1.title Star Wars
+      .title
       h2.subtitle All the Star Wars data you've ever wanted
-    section.container
+    section.datacontainer
       .topdata
         p
           strong Planets, Spaceships, Vehicles, People, Films and Species
           br
           | From all 
-          strong SEVEN s
+          strong SEVEN 
           | Star Wars films
           br
           | Now with The Force Awakens data
@@ -29,16 +29,22 @@ html(lang="en", ng-app='app')
         h3 Try it now!
         .dataenter
           form.input-container(name="form")
-            select.form-control.left-input(ng-model="vm.category")
+            select.form-control.left-input(
+              ng-model="vm.category",
+              ng-options="option for option in vm.selects.names",
+              ng-change="vm.onSelectChange(vm.category)"
+            )
               option(value="", disabled selected hidden) Select
-              option(ng-repeat="option in vm.selects.names" value="{{option}}") {{option}}
-            ui-select.center-input(ng-model='vm.selectedItem', style="border-radius: 0;")
-              ui-select-match
+            ui-select.center-input(
+              ng-model='vm.selectedItem',
+              ng-disabled="!vm.category"
+            )
+              ui-select-match(placeholder="{{ vm.placeholder() }}")
                 span(ng-bind='$select.selected.name')
-              ui-select-choices(repeat='item in (vm.items | filter: $select.search) track by item.id', style="border-radius: 0;")
+              ui-select-choices(repeat='item.name as item in (vm.items | filter: $select.search)')
                 span(ng-bind='item.name')
-            button.add.form-control.right-input(ng-disabled='form.$invalid')
+            button.add.form-control.right-input(ng-disabled='!vm.selectedItem')
               |Request
-    
+        //vm.loading ? 'Loading items' : 'Enter a category'
     // inject:js
     // endinject
