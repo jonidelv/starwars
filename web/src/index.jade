@@ -5,7 +5,9 @@ html(lang="en", ng-app='app')
     title new app
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='css/fonts/fonts.css')
-    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css')
+
     
     // inject:css
     // endinject
@@ -29,22 +31,42 @@ html(lang="en", ng-app='app')
         h3 Try it now!
         .dataenter
           form.input-container(name="form")
-            select.form-control.left-input(
+            select.form-control.left-input.selectpicker(
               ng-model="vm.category",
               ng-options="option for option in vm.selects.names",
               ng-change="vm.onSelectChange(vm.category)"
             )
-              option(value="", disabled selected hidden) Select
+              option(value="", disabled selected hidden) Category
             ui-select.center-input(
               ng-model='vm.selectedItem',
-              ng-disabled="!vm.category"
+              ng-disabled="!vm.category || vm.loading",
+            
             )
               ui-select-match(placeholder="{{ vm.placeholder() }}")
                 span(ng-bind='$select.selected.name')
               ui-select-choices(repeat='item.name as item in (vm.items | filter: $select.search)')
                 span(ng-bind='item.name')
-            button.add.form-control.right-input(ng-disabled='!vm.selectedItem')
+            button.add.form-control.right-input(ng-disabled='!vm.selectedItem', data-toggle='modal', data-target='#myModal')
               |Request
-        //vm.loading ? 'Loading items' : 'Enter a category'
+              
+            // Modal
+            #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') ×
+                    h4#myModalLabel.modal-title {{vm.selectedItem}}
+                  .modal-body
+                    | {{ vm.father }}
+                  .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-primary(type='button') Save changes
+    
+    script(src='//code.jquery.com/jquery-1.12.0.min.js')
+    script(src='//code.jquery.com/jquery-migrate-1.2.1.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js')
+
     // inject:js
     // endinject

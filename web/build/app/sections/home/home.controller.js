@@ -19,6 +19,7 @@
         swapi[option.toLowerCase()].all()
           .then( function(response) {
               vm.items = response.results;
+              vm.father = response.count;
               vm.loading = false;
           });
       }
@@ -28,11 +29,13 @@
             return 'Select a category';
         }
         if (vm.category && vm.loading) {
-          return 'Loading wait 1 sec...';
+          return 'Loading... ';
         } else {
           return 'Start typing the '+vm.category;
         }
       }
+
+
   }
 
 })();

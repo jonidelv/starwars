@@ -39,8 +39,28 @@ $inputc:  #ffe300;
 }
 
 .ui-select-bootstrap .ui-select-choices-row.active>a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     outline: 0;
     background-color:  #ffe300;
+}
+
+li.selected>a {
+  color: #000;
+  text-decoration: none;
+  outline: 0;
+  background-color:  #ffe300;
+}
+
+.dropdown-menu>li>a:focus {
+  color: #000;
+  text-decoration: none;
+  outline: 0 !important;
+  background-color:  #ffe300;
+  box-shadow: none !important;
+}
+.dropdown-menu>li>a:checked {
+  text-decoration: none;
+  outline: 0 !important;
+  box-shadow: none !important;
 }
