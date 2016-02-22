@@ -41,4 +41,3 @@ bower_components
 .vscode/*
 jsconfig.json
 typings/*
-web/build/bowerfiles

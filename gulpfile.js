@@ -26,7 +26,7 @@ gulp.task('serve', ['sass','fonts','clean','jadeCompila','jadeCompila2','bower',
     });
 
     gulp.watch('web/**/*.scss', ['sass']);
-    gulp.watch('web/build/app/**/*.jade', ['jadeCompila2']);
+    gulp.watch('web/build/app/**/*.jade', ['jade-watch']);
     gulp.watch('web/src/**/*.jade', ['clean','jade-watch','inject']);
     gulp.watch('bower_components/**', ['default']);
     gulp.watch('web/build/*.html').on('change', browserSync.reload);
@@ -81,7 +81,7 @@ return gulp.src('web/build/app/**/*.jade')
 });
 
 //jade watch
-gulp.task('jade-watch', ['jadeCompila']);
+gulp.task('jade-watch', ['jadeCompila','jadeCompila2']);
 
 //iject gulp
 gulp.task('inject', ['jadeCompila'], function () {
