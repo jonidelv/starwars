@@ -3,6 +3,8 @@
 
     angular
         .module('app.core', [
-            'ui.router'
+            'ui.router',
+            'ui.bootstrap',
+            'ne.swapi'
         ]);
 })();

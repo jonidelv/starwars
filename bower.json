@@ -21,6 +21,7 @@
     "animate.css": "^3.5.1",
     "ui-select": "angular-ui-select#^0.14.9",
     "angular-sanitize": "^1.5.0",
-    "ne-swapi": "^0.1.4"
+    "ne-swapi": "^0.1.4",
+    "angular-bootstrap": "^1.1.2"
   }
 }

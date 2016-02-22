@@ -4,7 +4,6 @@
     angular
         .module('app.home', [
           'ui.select',
-          'ngSanitize',
-          'ne.swapi'
+          'ngSanitize'
         ]);
 })();

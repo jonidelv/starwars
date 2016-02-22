@@ -21,6 +21,7 @@
               vm.items = response.results;
               vm.father = response.count;
               vm.loading = false;
+              console.log(response.results);
           });
       }
 
@@ -34,7 +35,6 @@
           return 'Start typing the '+vm.category;
         }
       }
-
 
   }
 
