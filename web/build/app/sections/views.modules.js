@@ -9,6 +9,7 @@
             'app.planets',
             'app.species',
             'app.starships',
-            'app.vehicles'
+            'app.vehicles',
+            'ne.swapi'
         ]);
 })();

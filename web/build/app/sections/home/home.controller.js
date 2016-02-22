@@ -23,7 +23,7 @@
               vm.loading = false;
               console.log(response.results);
           });
-      }
+      };
 
       vm.placeholder = function(){
         if (!vm.category) {
@@ -34,7 +34,7 @@
         } else {
           return 'Start typing the '+vm.category;
         }
-      }
+      };
 
   }
 
