@@ -64,3 +64,9 @@ li.selected>a {
   outline: 0 !important;
   box-shadow: none !important;
 }
+.dropdown-menu>li>a:hover {
+  background-color: lightgrey;
+}
+.ui-select-bootstrap .ui-select-choices-row>a:hover, .ui-select-bootstrap .ui-select-choices-row>a:focus {
+  background-color: lightgrey;
+}

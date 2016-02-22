@@ -1,0 +1,48 @@
+header
+  .title
+  h2.subtitle All the Star Wars data you've ever wanted
+section.datacontainer
+  .topdata
+    p
+      strong Planets, Spaceships, Vehicles, People, Films and Species
+      br
+      | From all 
+      strong SEVEN 
+      | Star Wars films
+      br
+      | Now with The Force Awakens data
+  .inputdata(ng-controller="HomeController as vm")
+    h3 Try it now!
+    .dataenter
+      form.input-container(name="form")
+        select.form-control.left-input.selectpicker(
+          ng-model="vm.category",
+          ng-options="option for option in vm.selects.names",
+          ng-change="vm.onSelectChange(vm.category)"
+        )
+          option(value="", disabled selected hidden) Category
+        ui-select.center-input(
+          ng-model='vm.selectedItem',
+          ng-disabled="!vm.category || vm.loading",
+        
+        )
+          ui-select-match(placeholder="{{ vm.placeholder() }}")
+            span(ng-bind='$select.selected.name')
+          ui-select-choices(repeat='vm.answer(vm.category, item) as item in (vm.items | filter: $select.search)')
+            span(ng-bind='vm.answer(vm.category, item)')
+        button.add.form-control.right-input(ng-disabled='!vm.selectedItem', data-toggle='modal', data-target='#myModal')
+          |Request
+          
+        // Modal 
+        #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') ×
+                h4#myModalLabel.modal-title {{ vm.selectedItem }}
+              .modal-body
+                | {{ vm.father }}
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+                button.btn.btn-primary(type='button') Save changes

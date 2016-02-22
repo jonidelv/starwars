@@ -13,9 +13,13 @@
         names: ['Films', 'People', 'Planets', 'Species', 'Starships', 'Vehicles']
       };
       vm.items = [];
-
+      vm.variable = 'name';
       vm.onSelectChange = function(option) {
         vm.loading = true;
+        if (option === 'Films') {
+          vm.variable = 'title';
+          console.log(vm.variable);
+        }
         swapi[option.toLowerCase()].all()
           .then( function(response) {
               vm.items = response.results;
@@ -35,6 +39,23 @@
           return 'Start typing the '+vm.category;
         }
       };
+
+      vm.answer = function (option, item) {
+        if (option === 'Films' ) {
+          return item.title;
+        }
+        return item.name;
+      };
+
+
+
+    /*  swapi.films.all()
+      .then(function(response) {
+        vm.filmss = response;
+        console.log(vm.filmss); // {"count": 39, "results": [{"name": "Sand Crawler", ...} ...] ...}
+      }); */
+
+
 
   }
 

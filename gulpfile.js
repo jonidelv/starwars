@@ -14,7 +14,7 @@ var options = { };
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass','fonts','clean','jadeCompila','bower','inject'], function() {
+gulp.task('serve', ['sass','fonts','clean','jadeCompila','jadeCompila2','bower','inject'], function() {
 
     browserSync.init({
         server: {
@@ -26,6 +26,7 @@ gulp.task('serve', ['sass','fonts','clean','jadeCompila','bower','inject'], func
     });
 
     gulp.watch('web/**/*.scss', ['sass']);
+    gulp.watch('web/build/app/**/*.jade', ['jadeCompila2']);
     gulp.watch('web/src/**/*.jade', ['clean','jade-watch','inject']);
     gulp.watch('bower_components/**', ['default']);
     gulp.watch('web/build/*.html').on('change', browserSync.reload);
@@ -66,6 +67,17 @@ return gulp.src('web/src/**/*.jade')
   }))
   .pipe(plumber.stop())
   .pipe(gulp.dest('web/build/'));
+});
+
+// compilar jade 2
+gulp.task('jadeCompila2', function () {
+return gulp.src('web/build/app/**/*.jade')
+  .pipe(plumber())
+  .pipe(jade({
+    pretty: true
+  }))
+  .pipe(plumber.stop())
+  .pipe(gulp.dest('web/build/app/'));
 });
 
 //jade watch
