@@ -14,6 +14,7 @@
       };
       vm.items = [];
       vm.variable = 'name';
+
       vm.onSelectChange = function(option) {
         vm.loading = true;
         if (option === 'Films') {
@@ -25,7 +26,18 @@
               vm.items = response.results;
               vm.father = response.count;
               vm.loading = false;
-              console.log(response.results);
+
+              vm.searchId = function (selection) {
+                  console.log(111);
+                  for (var i = 0; i < response.count; i++) {
+                    if (vm.items[i] === selection) {
+                      console.log(vm.items[i].id);
+                      return vm.items[i].id;
+
+                    }
+                  }
+              };
+
           });
       };
 
