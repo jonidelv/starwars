@@ -11,10 +11,23 @@
   function peopleRoute($stateProvider) {
     $stateProvider
       .state('people', {
-        url: '/people',
-        templateUrl: 'app/sections/people.html',
-        controller: 'peopleController',
-        controllerAs: 'vm'
+        parent: 'home',
+        url: 'people/:id',
+        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+
+          $uibModal.open({
+            controller: 'PeopleController',
+            controllerAs: 'vm',
+            templateUrl: 'app/sections/people/people.html',
+            size: 'md'
+          }).result.then(function() {
+            $state.go('^');
+          }, function () {
+            $state.go('^');
+          });
+
+        }
+      ]
       });
   }
 
