@@ -18,23 +18,7 @@
           <ui-select-match placeholder="{{ vm.placeholder() }}"><span ng-bind="$select.selected.name"></span></ui-select-match>
           <ui-select-choices repeat="vm.answer(vm.category, item) as item in (vm.items | filter: $select.search)"><span ng-bind="vm.answer(vm.category, item)"></span></ui-select-choices>
         </ui-select>
-        <button ng-disabled="!vm.selectedItem" data-toggle="modal" data-target="#myModal" class="add form-control right-input">Request</button>
-        <!-- Modal -->
-        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
-          <div role="document" class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                <h4 id="myModalLabel" class="modal-title">{{ vm.selectedItem }}</h4>
-              </div>
-              <div class="modal-body">{{ vm.father }}</div>
-              <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <button ng-disabled="!vm.selectedItem" class="add form-control right-input" ui-sref="people/:id">Request</button>
       </form>
     </div>
   </div>

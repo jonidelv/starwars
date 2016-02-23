@@ -49,14 +49,6 @@
 
 
 
-    /*  swapi.films.all()
-      .then(function(response) {
-        vm.filmss = response;
-        console.log(vm.filmss); // {"count": 39, "results": [{"name": "Sand Crawler", ...} ...] ...}
-      }); */
-
-
-
   }
 
 })();
