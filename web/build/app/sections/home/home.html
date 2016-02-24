@@ -18,7 +18,7 @@
           <ui-select-match placeholder="{{ vm.placeholder() }}"><span ng-bind="$select.selected.name"></span></ui-select-match>
           <ui-select-choices repeat="vm.answer(vm.category, item) as item in (vm.items | filter: $select.search)"><span ng-bind="vm.answer(vm.category, item)"></span></ui-select-choices>
         </ui-select>
-        <button ng-disabled="!vm.selectedItem" class="add form-control right-input" ui-sref="vm.category({ id: 11 })">Request</button>
+        <button ng-disabled="!vm.selectedItem" class="add form-control right-input" ng-click="vm.selectId(vm.category, vm.selectedItem)">Request</button>
       </form>
     </div>
   </div>

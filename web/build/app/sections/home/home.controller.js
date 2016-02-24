@@ -5,9 +5,9 @@
       .module('app.home')
       .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['swapi'];
+    HomeController.$inject = ['swapi','$state'];
 
-    function HomeController(swapi) {
+    function HomeController(swapi,$state) {
       var vm = this;
       vm.selects = {
         names: ['Films', 'People', 'Planets', 'Species', 'Starships', 'Vehicles']
@@ -17,29 +17,36 @@
 
       vm.onSelectChange = function(option) {
         vm.loading = true;
-        if (option === 'Films') {
-          vm.variable = 'title';
-          console.log(vm.variable);
-        }
         swapi[option.toLowerCase()].all()
           .then( function(response) {
               vm.items = response.results;
               vm.father = response.count;
               vm.loading = false;
+          });
+      };
 
-              vm.searchId = function (selection) {
-                  console.log(111);
-                  for (var i = 0; i < response.count; i++) {
-                    if (vm.items[i] === selection) {
-                      console.log(vm.items[i].id);
-                      return vm.items[i].id;
 
-                    }
-                  }
-              };
+      vm.selectId = function(option, selected) {
+
+        swapi[option.toLowerCase()].all()
+          .then( function(response) {
+
+              for (var i = 0; i < response.count; i++) {
+                 if (response.results[i].name == selected){
+                   var paso = response.results[i].url.replace(/\D/g,'');
+                  console.log(paso);
+                   //$state.go(option.toLowerCase()({ id:ad  }));
+                   $state.go(option.toLowerCase());
+                 }
+              }
 
           });
       };
+
+
+
+
+
 
       vm.placeholder = function(){
         if (!vm.category) {
