@@ -23,6 +23,7 @@ body {
       background-repeat: no-repeat;
       background-size: contain;
       height: 170px;
+      margin-top: 5px;
     }
 
     .subtitle {
@@ -138,6 +139,36 @@ body {
           }
         }
       }
+    }
+  }
+  .modal-content {
+    //border: 9px solid rgba(255, 227, 0, 0.8);
+    background-color: black;
+    .title-modal {
+      font-family:"STARWARS";
+      text-align: center;
+      font-size: 40px;
+      position: relative;
+      top: 20px;
+      left: 60px;
+      color: rgba(255, 227, 0, 0.9);
+    }
+    .modal-body {
+      background-image: url('../img/card-bg.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      padding: 0;
+      .interior {
+        height: 470px;
+        color: lightgrey;
+        padding-right: 62px;
+        padding-left: 57px;
+        padding-top: 90px;
+        padding-bottom: 110px;
+        overflow: hidden;
+      }
+
     }
   }
 }
