@@ -149,9 +149,10 @@ body {
       text-align: center;
       font-size: 40px;
       position: relative;
-      top: 20px;
-      left: 60px;
+      top: 37px;
+      left: 66px;
       color: rgba(255, 227, 0, 0.9);
+      text-transform: uppercase;
     }
     .modal-body {
       background-image: url('../img/card-bg.png');
@@ -167,6 +168,7 @@ body {
         padding-top: 90px;
         padding-bottom: 110px;
         overflow: hidden;
+        width: 535px;
       }
 
     }
