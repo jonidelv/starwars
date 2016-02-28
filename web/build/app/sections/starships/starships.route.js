@@ -11,10 +11,23 @@
   function starshipsRoute($stateProvider) {
     $stateProvider
       .state('starships', {
-        url: '/starships',
-        templateUrl: 'app/sections/starships.html',
-        controller: 'starshipsController',
-        controllerAs: 'vm'
+        parent: 'home',
+        url: 'starships/:id',
+        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+
+          $uibModal.open({
+            controller: 'StarshipsController',
+            controllerAs: 'vm',
+            templateUrl: 'app/sections/starships/starships.html',
+            size: 'md'
+          }).result.then(function() {
+            $state.go('^');
+          }, function () {
+            $state.go('^');
+          });
+
+        }
+      ]
       });
   }
 

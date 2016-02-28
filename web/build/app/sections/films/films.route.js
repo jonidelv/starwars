@@ -11,10 +11,23 @@
   function filmsRoute($stateProvider) {
     $stateProvider
       .state('films', {
-        url: '/films',
-        templateUrl: 'app/sections/films.html',
-        controller: 'filmsController',
-        controllerAs: 'vm'
+        parent: 'home',
+        url: 'films/:id',
+        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+
+          $uibModal.open({
+            controller: 'FilmsController',
+            controllerAs: 'vm',
+            templateUrl: 'app/sections/films/films.html',
+            size: 'md'
+          }).result.then(function() {
+            $state.go('^');
+          }, function () {
+            $state.go('^');
+          });
+
+        }
+      ]
       });
   }
 

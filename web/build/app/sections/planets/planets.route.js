@@ -11,10 +11,23 @@
   function planetsRoute($stateProvider) {
     $stateProvider
       .state('planets', {
-        url: '/planets',
-        templateUrl: 'app/sections/planets.html',
-        controller: 'planetsController',
-        controllerAs: 'vm'
+        parent: 'home',
+        url: 'planets/:id',
+        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+
+          $uibModal.open({
+            controller: 'PlanetsController',
+            controllerAs: 'vm',
+            templateUrl: 'app/sections/planets/planets.html',
+            size: 'md'
+          }).result.then(function() {
+            $state.go('^');
+          }, function () {
+            $state.go('^');
+          });
+
+        }
+      ]
       });
   }
 

@@ -11,10 +11,23 @@
   function speciesRoute($stateProvider) {
     $stateProvider
       .state('species', {
-        url: '/species',
-        templateUrl: 'app/sections/species.html',
-        controller: 'speciesController',
-        controllerAs: 'vm'
+        parent: 'home',
+        url: 'species/:id',
+        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+
+          $uibModal.open({
+            controller: 'SpeciesController',
+            controllerAs: 'vm',
+            templateUrl: 'app/sections/species/species.html',
+            size: 'md'
+          }).result.then(function() {
+            $state.go('^');
+          }, function () {
+            $state.go('^');
+          });
+
+        }
+      ]
       });
   }
 
