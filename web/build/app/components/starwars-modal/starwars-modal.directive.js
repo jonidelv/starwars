@@ -11,12 +11,7 @@
       scope: {
         title: '='
       },
-      // templateUrl: 'starwars-modal.html'
-      template: '<div class="modal-body">' +
-                  '<h3 class="title-modal">{{title}}</h3>' +
-                  '<div class=interior ng-transclude>' +
-                  '</div>' +
-                '</div>'
+      templateUrl: 'app/components/starwars-modal/starwars-modal.html'
     };
 
   }
