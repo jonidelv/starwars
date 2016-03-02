@@ -14,19 +14,19 @@
       };
       vm.items = [];
       vm.itemsMap = {};
-      vm.variable = 'name';
 
       vm.onSelectChange = function(option) {
         vm.loading = true;
         swapi[option.toLowerCase()].all()
           .then(function(response) {
+            vm.items = [];
+            vm.itemsMap = {};
             response.results.forEach(function(item) {
               var property = option === 'Films' ? 'title' : 'name';
+              console.log(property);
               vm.itemsMap[item[property]] = item;
               vm.items.push(item);
             });
-            //vm.items = response.results;
-            vm.father = response.count;
             vm.loading = false;
           });
       };
@@ -35,13 +35,9 @@
       vm.selectId = function(selectedName, parentState) {
         var item = vm.itemsMap[selectedName];
         var itemId = item.url.replace(/\D/g, '');
-        $state.go(parentState.toLowerCase(), { id:itemId });
-        // for (var i = 0; i < vm.items.length; i++) {
-        //   if (vm.items[i].name === selectedName) {
-        //     var itemId = vm.items[i].url.replace(/\D/g, '');
-        //     $state.go(parentState.toLowerCase(), { id:itemId });
-        //   }
-        // }
+        var parent = parentState.toLowerCase();
+        vm.selectedItem = '';
+        $state.go(parent, { id:itemId });
       };
 
 
@@ -57,11 +53,8 @@
           }
         };
 
-        vm.answer = function(option, item) {
-          if (option === 'Films') {
-            return item.title;
-          }
-          return item.name;
+        vm.answer = function(option) {
+          return option === 'Films' ? 'title' : 'name';
         };
 
 

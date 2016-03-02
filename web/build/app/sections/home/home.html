@@ -1,25 +1,33 @@
-
-<header>
-  <div class="title"></div>
-  <h2 class="subtitle">All the Star Wars data you've ever wanted</h2>
-</header>
-<section class="datacontainer">
-  <div class="topdata">
-    <p><strong>Planets, Spaceships, Vehicles, People, Films and Speciesss</strong><br/>From all <strong>SEVEN </strong>Star Wars films<br/>Now with The Force Awakens data</p>
-  </div>
-  <div ng-controller="HomeController as vm" class="inputdata">
-    <h3>Try it now!</h3>
-    <div class="dataenter">
-      <form name="form" class="input-container">
-        <select ng-model="vm.category" ng-options="option for option in vm.selects.names" ng-change="vm.onSelectChange(vm.category)" class="form-control left-input selectpicker">
-          <option value="" disabled="disabled" selected="selected" hidden="hidden">Category</option>
-        </select>
-        <ui-select ng-model="vm.selectedItem" ng-disabled="!vm.category || vm.loading" class="center-input">
-          <ui-select-match placeholder="{{ vm.placeholder() }}"><span ng-bind="$select.selected.name"></span></ui-select-match>
-          <ui-select-choices repeat="vm.answer(vm.category, item) as item in (vm.items | filter: $select.search)"><span ng-bind="vm.answer(vm.category, item)"></span></ui-select-choices>
-        </ui-select>
-        <button ng-disabled="!vm.selectedItem" class="add form-control right-input" ng-click="vm.selectId(vm.selectedItem, vm.category)">Request</button>
-      </form>
+<div ng-controller="HomeController as vm">
+  <header>
+    <div class="title"></div>
+    <h2 class="subtitle">All the Star Wars data you've ever wanted</h2>
+  </header>
+  <section class="datacontainer">
+    <div class="topdata">
+      <p>
+        <strong>Planets, Spaceships, Vehicles, People, Films and Speciesss</strong><br/>From all
+        <strong>SEVEN
+        </strong>Star Wars films<br/>Now with The Force Awakens data</p>
     </div>
-  </div>
-</section>
+    <div class="inputdata">
+      <h3>Try it now!</h3>
+      <div class="dataenter">
+        <form name="form" class="input-container">
+          <select ng-model="vm.category" ng-options="option for option in vm.selects.names" ng-change="vm.onSelectChange(vm.category)" class="form-control left-input selectpicker">
+            <option value="" disabled="disabled" selected="selected" hidden="hidden">Category</option>
+          </select>
+          <ui-select ng-model="vm.selectedItem" ng-disabled="!vm.category || vm.loading" class="center-input">
+            <ui-select-match placeholder="{{ vm.placeholder() }}">
+              <span ng-bind="$select.selected[vm.answer(vm.category)]"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item[vm.answer(vm.category)] as item in (vm.items | filter: $select.search)">
+              <span ng-bind="item[vm.answer(vm.category)]"></span>
+            </ui-select-choices>
+          </ui-select>
+          <button ng-disabled="!vm.selectedItem" class="add form-control right-input" ng-click="vm.selectId(vm.selectedItem, vm.category)">Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

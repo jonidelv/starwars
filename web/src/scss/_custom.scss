@@ -25,6 +25,9 @@ body {
       height: 170px;
       margin-top: 5px;
     }
+    .title.none {
+      background-image: none;
+    }
 
     .subtitle {
       color: $yellow-color;
