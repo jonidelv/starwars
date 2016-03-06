@@ -24,6 +24,7 @@
                     vm.pilot = response.name;
               });
             }
+            vm.manufacturer = vm.vehicles.manufacturer.substring(0, 44);
             vm.pilot = 'none';
             return vehicles;
           });
