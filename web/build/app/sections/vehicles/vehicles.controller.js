@@ -16,6 +16,15 @@
         function activate() {
           return swapi.vehicles.id($stateParams.id).then(function(vehicles) {
             vm.vehicles = vehicles;
+            console.log(vm.vehicles);
+            if (vm.vehicles.pilots.length >= 1) {
+
+              swapi.get(vm.vehicles.pilots[0])
+                .then(function(response) {
+                    vm.pilot = response.name;
+              });
+            }
+            vm.pilot = 'none';
             return vehicles;
           });
         }

@@ -1,22 +1,22 @@
 body {
   background-color: $background-color;
   font-family: 'Roboto';
-  .bootstrap-select .dropdown-toggle:focus{outline:0 !important}
-  .bootstrap-select.btn-group .dropdown-menu .notify { box-shadow: none !important}
-
+  .bootstrap-select .dropdown-toggle:focus {
+    outline: 0 !important;
+  }
+  .bootstrap-select.btn-group .dropdown-menu .notify {
+    box-shadow: none !important;
+  }
   .dropdown-menu {
     margin: 0;
   }
-
   .ui-select-bootstrap > .ui-select-choices {
     margin-top: 0;
   }
-
   header {
     background-color: $header-color;
     height: 210px;
     width: 100%;
-
     .title {
       background-image: url('../img/logo.png');
       background-position: center;
@@ -28,7 +28,6 @@ body {
     .title.none {
       background-image: none;
     }
-
     .subtitle {
       color: $yellow-color;
       font-size: 23px;
@@ -37,27 +36,23 @@ body {
       text-align: center;
     }
   }
-
   .datacontainer {
     background-image: url('../img/background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-
     .topdata {
       border-bottom: 1px solid $black-color;
       color: $grey-color;
       line-height: 30px;
       padding: 15px;
       text-align: center;
-
       strong {
         font-size: 18px;
         text-transform: capitalize;
       }
     }
-
     .inputdata {
       h3 {
         color: $grey-color;
@@ -65,29 +60,23 @@ body {
         margin-top: 60px;
         text-align: center;
       }
-
       .dataenter {
         .input-container {
           margin-top: 30px;
           text-align: center;
-
           .disabled {
             display: none;
           }
-
           option:checked {
             background-color: $yellow-color;
             color: #000;
           }
-
           .center-input {
             display: inline-block;
             width: 400px;
-
             span.btn.btn-default.form-control.ui-select-toggle {
               background-color: #fff;
             }
-
             .dropdown-menu {
               border-radius: 0;
               max-height: 169px;
@@ -95,12 +84,10 @@ body {
             .form-control {
               border-radius: 0;
             }
-
             .btn {
               border-radius: 0;
             }
           }
-
           .left-input {
             appearance: none;
             background-color: $grey-color-b;
@@ -111,7 +98,6 @@ body {
             display: inline-block;
             left: 3px;
             width: 120px;
-
             .dropdown-menu {
               border-radius: 0;
               border-top-left-radius: 4px;
@@ -126,7 +112,6 @@ body {
               border-color: $white-color;
             }
           }
-
           .right-input {
             border-radius: 0;
             background-color: $grey-color-b;
@@ -149,9 +134,8 @@ body {
     z-index: 999999999999;
     background-color: black;
     cursor: auto;
-
     .title-modal {
-      font-family:"STARWARS";
+      font-family: "STARWARS";
       text-align: center;
       font-size: 40px;
       position: relative;
@@ -166,22 +150,38 @@ body {
       background-repeat: no-repeat;
       background-size: contain;
       padding: 0;
-
       .interior {
         height: 470px;
         color: lightgrey;
         padding-left: 57px;
-        padding-top: 133px;
-        padding-bottom: 86px;
+        padding-top: 129px;
+        padding-bottom: 97px;
         overflow: hidden;
         width: 535px;
       }
-
     }
   }
   .modal {
     &.fade {
       cursor: pointer !important;
+    }
+  }
+  table {
+    margin: auto;
+    position: relative;
+    top: 53%;
+    transform: translateY(-50%);
+    .one {
+      color: #999;  
+    }
+
+    td:first-child {
+    padding-right: 15px;
+    padding-bottom: 5px;
+    text-align: right;
+    }
+    tr:last-child td {
+      padding-bottom: 0;
     }
   }
 }
