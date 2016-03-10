@@ -172,8 +172,22 @@ body {
     top: 53%;
     transform: translateY(-50%);
     .one {
-      color: #999;  
+      color: #999;
     }
+    li.ng-binding.ng-scope {
+      display: inline-block;
+      margin-right: 10px;
+      &:after {
+        content: ",";
+      }
+      &:last-child:after {
+        display: none;
+      }
+    }
+  .link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
     td:first-child {
     padding-right: 15px;

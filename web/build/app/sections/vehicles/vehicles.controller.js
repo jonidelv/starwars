@@ -1,34 +1,52 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('app.vehicles')
-        .controller('VehiclesController', VehiclesController);
+  angular
+    .module('app.vehicles')
+    .controller('VehiclesController', VehiclesController);
 
-    VehiclesController.$inject = ['$stateParams', 'swapi'];
+  VehiclesController.$inject = ['$q', '$stateParams', 'swapi'];
 
-    /* @ngInject */
-    function VehiclesController($stateParams, swapi) {
-        var vm = this;
+  /* @ngInject */
+  function VehiclesController($q, $stateParams, swapi) {
+    var vm = this;
 
-        activate();
+    activate();
 
-        function activate() {
-          return swapi.vehicles.id($stateParams.id).then(function(vehicles) {
-            vm.vehicles = vehicles;
-            console.log(vm.vehicles);
-            if (vm.vehicles.pilots.length >= 1) {
+    function activate() {
+      return swapi.vehicles.id($stateParams.id).then(function(vehicles) {
+        vm.vehicles = vehicles;
+        console.log(vm.vehicles);
+        vm.manufacturer = vm.vehicles.manufacturer.substring(0, 44);
+        vm.pilot = 'none';
 
-              swapi.get(vm.vehicles.pilots[0])
-                .then(function(response) {
-                    vm.pilot = response.name;
-              });
-            }
-            vm.manufacturer = vm.vehicles.manufacturer.substring(0, 44);
-            vm.pilot = 'none';
-            return vehicles;
-          });
-        }
+        //return swapi.get(vm.vehicles.pilots[0]);
+        var pilotsQueue = [];
+        vm.vehicles.pilots.forEach(function(pilotsUrl) {
+          pilotsQueue.push(swapi.get(pilotsUrl));
+        });
 
+        return $q.all(pilotsQueue);
+      }).then(function(response) {
+        vm.pilots = response;
+        console.log(vm.pilots[0]);
+
+        var filmsQueue = [];
+        vm.vehicles.films.forEach(function(filmsUrl) {
+          filmsQueue.push(swapi.get(filmsUrl));
+        });
+
+        return $q.all(filmsQueue);
+      }).then(function(films) {
+        console.log(films);
+        vm.films= films;
+        return vm.filmsList;
+      });
     }
+
+    function getId(url){
+      return url.replace(/\D/g, '');
+    }
+
+  }
 })();

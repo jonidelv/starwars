@@ -2,48 +2,61 @@
   <table>
     <tbody>
       <tr>
-        <td class="one">Cargo capacity :</td>
+        <td class="one">Cargo capacity:</td>
         <td>{{vm.vehicles.cargo_capacity}}</td>
       </tr>
       <tr>
-        <td class="one">Consumables :</td>
+        <td class="one">Consumables:</td>
         <td>{{vm.vehicles.consumables}}</td>
       </tr>
       <tr>
-        <td class="one">Crew :</td>
+        <td class="one">Crew:</td>
         <td>{{vm.vehicles.crew}}</td>
       </tr>
       <tr>
-        <td class="one">Length :</td>
+        <td class="one">Length:</td>
         <td>{{vm.vehicles.length}}</td>
       </tr>
       <tr>
-        <td class="one">Manufacturer :</td>
+        <td class="one">Manufacturer:</td>
         <td>{{vm.manufacturer}}</td>
       </tr>
       <tr>
-        <td class="one">Speed :</td>
+        <td class="one">Speed:</td>
         <td>{{vm.vehicles.max_atmosphering_speed}}</td>
       </tr>
       <tr>
-        <td class="one">Model :</td>
+        <td class="one">Model:</td>
         <td>{{vm.vehicles.model}}</td>
       </tr>
       <tr>
-        <td class="one">Passengers :</td>
+        <td class="one">Passengers:</td>
         <td>{{vm.vehicles.passengers}}</td>
       </tr>
       <tr>
-        <td class="one">Vehicle class :</td>
+        <td class="one">Vehicle class:</td>
         <td>{{vm.vehicles.vehicle_class}}</td>
       </tr>
       <tr>
-        <td class="one">Cost in credits :</td>
+        <td class="one">Cost in credits:</td>
         <td>{{vm.vehicles.cost_in_credits}}</td>
       </tr>
       <tr>
-        <td class="one">Pilot :</td>
-        <td>{{vm.pilot}}</td>
+        <td class="one">Pilot:</td>
+        <td  ng-if="vm.pilots.length">
+          <ul>
+            <li ng-repeat="pilot in vm.pilots" ui-sref="people({id:getId(vm.pilots.url)})" class="link">{{pilot.name}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.pilots.length">None</td>
+      </tr>
+      <tr>
+        <td class="one">Films:</td>
+        <td>
+          <ul>
+            <li ng-repeat="film in vm.films">{{film.title}}</li>
+          </ul>
+        </td>
       </tr>
     </tbody>
   </table>
