@@ -139,25 +139,24 @@ body {
       text-align: center;
       font-size: 40px;
       position: relative;
-      top: 45px;
+      top: 37px;
       color: rgba(255, 227, 0, 0.9);
       text-transform: uppercase;
-      height: 40px;
+      height: 45px;
     }
     .modal-body {
       background-image: url('../img/card-bg.png');
-      background-position: 4px 95px;
+      background-position: -27px 85px;
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: 110%;
       padding: 0;
       .interior {
         height: 470px;
         color: lightgrey;
-        padding-left: 57px;
-        padding-top: 129px;
-        padding-bottom: 97px;
+        padding-left: 10px;
+        padding-top: 128px;
+        padding-bottom: 74px;
         overflow: hidden;
-        width: 535px;
       }
     }
   }

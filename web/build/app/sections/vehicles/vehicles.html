@@ -45,7 +45,7 @@
         <td class="one">Pilot:</td>
         <td  ng-if="vm.pilots.length">
           <ul>
-            <li ng-repeat="pilot in vm.pilots" ui-sref="people({id:getId(vm.pilots.url)})" class="link">{{pilot.name}}</li>
+            <li ng-repeat="pilot in vm.pilots" ui-sref="people({id: vm.getId(pilot.url)})" class="link">{{pilot.name}}</li>
           </ul>
         </td>
         <td ng-if="!vm.pilots.length">None</td>
