@@ -30,7 +30,16 @@
         return $q.all(peopleQueue);
       }).then(function(people) {
         vm.people = people;
-        return people;
+
+        var filmsQueue = [];
+        vm.species.films.forEach(function(filmsUrl) {
+          filmsQueue.push(swapi.get(filmsUrl));
+        });
+
+        return $q.all(filmsQueue);
+      }).then(function(films) {
+        vm.films = films;
+        return vm.filmsList;
       });
 
     }

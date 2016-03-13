@@ -10,6 +10,20 @@ body {
   .dropdown-menu {
     margin: 0;
   }
+  .scroll{
+    overflow: scroll;
+    height: 265px;
+    width: 505px;
+    margin-left: 20px;
+  }
+  .scroll-normal {
+    margin: auto;
+    margin-top: 12px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+  }
   .ui-select-bootstrap > .ui-select-choices {
     margin-top: 0;
   }
@@ -154,8 +168,8 @@ body {
         height: 470px;
         color: lightgrey;
         padding-left: 10px;
-        padding-top: 128px;
-        padding-bottom: 74px;
+        padding-top: 120px;
+        padding-bottom: 85px;
         overflow: hidden;
       }
     }
@@ -165,11 +179,11 @@ body {
       cursor: pointer !important;
     }
   }
+
   table {
     margin: auto;
-    position: relative;
-    top: 53%;
-    transform: translateY(-50%);
+    margin-top: 25px;
+    margin-left: 10px;
     .one {
       color: #999;
     }
