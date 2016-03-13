@@ -5,11 +5,12 @@
         .module('app.starships')
         .controller('StarshipsController', StarshipsController);
 
-    StarshipsController.$inject = ['$stateParams', 'swapi'];
+    StarshipsController.$inject = ['$q', '$stateParams', 'swapi'];
 
     /* @ngInject */
-    function StarshipsController($stateParams, swapi) {
+    function StarshipsController($q, $stateParams, swapi) {
         var vm = this;
+        vm.getId = getId;
 
         activate();
 
@@ -17,18 +18,31 @@
           return swapi.starships.id($stateParams.id).then(function(starships) {
             vm.starships = starships;
             console.log(vm.starships);
-            if (vm.starships.pilots.length >= 1) {
 
-              swapi.get(vm.starships.pilots[0])
-                .then(function(response) {
-                    vm.pilot2 = response.name;
-              });
-            }
-            vm.manufacturer = vm.starships.manufacturer.substring(0, 44);
-            vm.pilot2 = 'none';
-            return starships;
+            var pilotsQueue = [];
+            vm.starships.pilots.forEach(function(pilotsUrl) {
+              pilotsQueue.push(swapi.get(pilotsUrl));
+            });
+
+            return $q.all(pilotsQueue);
+          }).then(function(response) {
+            vm.pilots = response;
+
+            var filmsQueue = [];
+            vm.starships.films.forEach(function(filmsUrl) {
+              filmsQueue.push(swapi.get(filmsUrl));
+            });
+
+            return $q.all(filmsQueue);
+          }).then(function(films) {
+            vm.films = films;
+            return vm.filmsList;
           });
         }
 
-    }
-})();
+        function getId(url) {
+          return url.replace(/\D/g, '');
+        }
+
+      }
+    })();

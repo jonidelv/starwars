@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td class="one">Manufacturer :</td>
-        <td>{{vm.manufacturer}}</td>
+        <td>{{vm.starships.manufacturer}}</td>
       </tr>
       <tr>
         <td class="one">Speed :</td>
@@ -43,7 +43,20 @@
       </tr>
       <tr>
         <td class="one">Pilot :</td>
-        <td>{{vm.pilot2}}</td>
+        <td  ng-if="vm.pilots.length">
+          <ul>
+            <li ng-repeat="pilot in vm.pilots" ui-sref="people({id: vm.getId(pilot.url)})" class="link">{{pilot.name}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.pilots.length">None</td>
+      </tr>
+      <tr>
+        <td class="one">Films:</td>
+        <td>
+          <ul>
+            <li ng-repeat="film in vm.films">{{film.title}}</li>
+          </ul>
+        </td>
       </tr>
     </tbody>
   </table>
