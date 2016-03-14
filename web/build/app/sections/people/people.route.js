@@ -21,9 +21,9 @@
             templateUrl: 'app/sections/people/people.html',
             size: 'md'
           }).result.then(function() {
-            $state.go('^');
+            $state.go($state.previous.name, { id: $state.previous.params.id });
           }, function () {
-            $state.go('^');
+            $state.go($state.previous.name, { id: $state.previous.params.id });
           });
 
         }

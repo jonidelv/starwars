@@ -22,8 +22,6 @@ body {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    margin-right: 25px;
-    margin-left: 18px;
 
   }
   .ui-select-bootstrap > .ui-select-choices {
@@ -169,9 +167,10 @@ body {
       .interior {
         height: 470px;
         color: lightgrey;
-        padding-left: 10px;
+        padding-left: 30px;
         padding-top: 120px;
         padding-bottom: 85px;
+        padding-right: 31px;
         overflow: hidden;
       }
     }

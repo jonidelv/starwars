@@ -10,6 +10,7 @@
   /* @ngInject */
   function PlanetsController($q, $stateParams, swapi) {
     var vm = this;
+    vm.getId = getId;
 
     activate();
 

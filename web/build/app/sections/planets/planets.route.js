@@ -21,9 +21,11 @@
             templateUrl: 'app/sections/planets/planets.html',
             size: 'md'
           }).result.then(function() {
-            $state.go('^');
+            console.log('$state', $state);
+            $state.go($state.previous.name, { id: $state.previous.params.id });
           }, function () {
-            $state.go('^');
+            console.log('$state', $state);
+            $state.go($state.previous.name, { id: $state.previous.params.id });
           });
 
         }

@@ -1,3 +1,56 @@
 <starwars-modal title="vm.person.name">
-  {{vm.person}}
+  <table class="scroll-normal">
+    <tbody>
+      <tr>
+        <td class="one">Birth Year:</td>
+        <td>{{vm.person.birth_year}}</td>
+      </tr>
+      <tr>
+        <td class="one">Eye Color:</td>
+        <td>{{vm.person.eye_color}}</td>
+      </tr>
+      <tr>
+        <td class="one">Gender:</td>
+        <td>{{vm.person.gender}}</td>
+      </tr>
+      <tr>
+        <td class="one">Hair Color:</td>
+        <td>{{vm.person.hair_color}}</td>
+      </tr>
+      <tr>
+        <td class="one">Height:</td>
+        <td>{{vm.person.height}}</td>
+      </tr>
+      <tr>
+        <td class="one">Mass:</td>
+        <td>{{vm.person.mass}}</td>
+      </tr>
+      <tr>
+        <td class="one">Skin Color:</td>
+        <td>{{vm.person.skin_color}}</td>
+      </tr>
+      <tr>
+        <td class="one">Homeworld:</td>
+        <td ng-if=" vm.homeworld != 'unknown' " class="link" ui-sref="planets({ id: vm.homeWorldId }) ">{{vm.homeworld}}</td>
+        <td ng-if=" vm.homeworld == 'unknown' " >{{vm.homeworld}}</td>
+      </tr>
+      <!--tr>
+        <td class="one">Pilot:</td>
+        <td  ng-if="vm.pilots.length">
+          <ul>
+            <li ng-repeat="pilot in vm.pilots" ui-sref="people({id: vm.getId(pilot.url)})" class="link">{{pilot.name}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.pilots.length">None</td>
+      </tr-->
+      <tr>
+        <td class="one">Films:</td>
+        <td>
+          <ul>
+            <li ng-repeat="film in vm.films">{{film.title}}</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </starwars-modal>
