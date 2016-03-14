@@ -10,7 +10,7 @@
     /* @ngInject */
     function PeopleController($q, $stateParams, swapi) {
         var vm = this;
-
+        vm.getId = getId;
         activate();
 
         function activate() {
@@ -31,10 +31,21 @@
             return $q.all(filmsQueue);
           }).then(function(films) {
             vm.films = films;
-            return vm.filmsList;
+
+            var speciesQueue = [];
+            vm.person.species.forEach(function(speciesUrl) {
+              speciesQueue.push(swapi.get(speciesUrl));
+            });
+
+            return $q.all(speciesQueue);
+          }).then(function(species) {
+            vm.species = species;
+
           });
         }
-
+        function getId(url) {
+          return url.replace(/\D/g, '');
+        }
 
     }
 })();

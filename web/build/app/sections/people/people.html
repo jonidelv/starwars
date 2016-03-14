@@ -32,23 +32,25 @@
       <tr>
         <td class="one">Homeworld:</td>
         <td ng-if=" vm.homeworld != 'unknown' " class="link" ui-sref="planets({ id: vm.homeWorldId }) ">{{vm.homeworld}}</td>
-        <td ng-if=" vm.homeworld == 'unknown' " >{{vm.homeworld}}</td>
+        <td ng-if=" vm.homeworld == 'unknown' ">{{vm.homeworld}}</td>
       </tr>
-      <!--tr>
-        <td class="one">Pilot:</td>
-        <td  ng-if="vm.pilots.length">
-          <ul>
-            <li ng-repeat="pilot in vm.pilots" ui-sref="people({id: vm.getId(pilot.url)})" class="link">{{pilot.name}}</li>
-          </ul>
-        </td>
-        <td ng-if="!vm.pilots.length">None</td>
-      </tr-->
       <tr>
         <td class="one">Films:</td>
         <td>
           <ul>
             <li ng-repeat="film in vm.films">{{film.title}}</li>
           </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="one">Species:</td>
+        <td ng-if="vm.person.species.length">
+          <ul>
+            <li class="link" ng-repeat="specie in vm.species" ui-sref="species({id: vm.getId(specie.url)})">{{specie.name}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.person.species.length">
+          unknown
         </td>
       </tr>
     </tbody>
