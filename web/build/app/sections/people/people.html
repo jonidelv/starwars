@@ -53,6 +53,28 @@
           unknown
         </td>
       </tr>
+      <tr>
+        <td class="one">starships:</td>
+        <td ng-if="vm.person.starships.length">
+          <ul>
+            <li class="link" ng-repeat="starship in vm.starships" ui-sref="starships({id: vm.getId(starship.url)})">{{starship.name}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.person.starships.length">
+          unknown
+        </td>
+      </tr>
+      <tr>
+        <td class="one">vehicles:</td>
+        <td ng-if="vm.person.vehicles.length">
+          <ul>
+            <li class="link" ng-repeat="vehicle in vm.vehicles" ui-sref="vehicles({id: vm.getId(vehicle.url)})">{{vehicle.name}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.person.vehicles.length">
+          unknown
+        </td>
+      </tr>
     </tbody>
   </table>
 </starwars-modal>
