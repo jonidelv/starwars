@@ -14,9 +14,11 @@
         activate();
 
         function activate() {
-          return swapi.films.id($stateParams.id).then(function(films) {
-            vm.films = films;
-            return films;
+          return swapi.films.id($stateParams.id).then(function(film) {
+            vm.film = film;
+            console.log(vm.film);
+            return film;
+
           });
         }
 

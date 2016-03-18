@@ -1,3 +1,27 @@
-<starwars-modal title="vm.films.title">
-  {{vm.films}}
+<starwars-modal title="vm.film.title">
+  <div class="cover-title"></div>
+  <table class="scroll-normal">
+    <tbody>
+      <tr>
+        <td class="one">Director:</td>
+        <td>{{vm.film.director}}</td>
+      </tr>
+      <tr>
+        <td class="one">Episode:</td>
+        <td>{{vm.film.episode_id}}</td>
+      </tr>
+      <tr>
+        <td class="one">Producer:</td>
+        <td>{{vm.film.producer}}</td>
+      </tr>
+      <tr>
+        <td class="one">Release date:</td>
+        <td>{{vm.film.release_date}}</td>
+      </tr>
+      <tr>
+        <td class="one">Opening crawl:</td>
+        <td>{{vm.film.opening_crawl}}</td>
+      </tr>
+    </tbody>
+  </table>
 </starwars-modal>

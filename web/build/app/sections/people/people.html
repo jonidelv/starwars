@@ -1,4 +1,5 @@
 <starwars-modal title="vm.person.name">
+  <div class="cover-title"></div>
   <table class="scroll-normal">
     <tbody>
       <tr>
@@ -38,7 +39,7 @@
         <td class="one">Films:</td>
         <td>
           <ul>
-            <li ng-repeat="film in vm.films">{{film.title}}</li>
+            <li class="link" ng-repeat="film in vm.films" ui-sref="films({id: vm.getId(film.url)})">{{film.title}}</li>
           </ul>
         </td>
       </tr>

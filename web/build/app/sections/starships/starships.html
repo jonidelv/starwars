@@ -1,5 +1,7 @@
 <starwars-modal title="vm.starships.name">
-  <table class="scroll-normal">
+  <div class="cover-title"></div>
+  <div class="scroll">
+  <table>
     <tbody>
       <tr>
         <td class="one">Cargo capacity :</td>
@@ -51,13 +53,14 @@
         <td ng-if="!vm.pilots.length">None</td>
       </tr>
       <tr>
-        <td class="one">Films:</td>
+        <td class="one" >Films:</td>
         <td>
           <ul>
-            <li ng-repeat="film in vm.films">{{film.title}}</li>
+            <li class="link" ng-repeat="film in vm.films" ui-sref="films({id: vm.getId(film.url)})">{{film.title}}</li>
           </ul>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
 </starwars-modal>
