@@ -13,6 +13,32 @@ body {
   .dropdown-menu {
     margin: 0;
   }
+  .footer {
+    color: #c9c5c5;
+    font-weight: lighter;
+    font-family: sans-serif;
+    background-color: black;
+    text-align: center;
+    font-size: 10px;
+    padding-bottom: 15px;
+    position: relative;
+    height: 15px;
+    span {
+    position: absolute;
+    right: 10px;
+    top: -3px;
+    }
+    a{
+      text-decoration: underline;
+
+      &:visited {
+        color: inherit;
+      }
+      &:hover {
+        color: $yellow-color;
+      }
+    }
+  }
   .cover-title {
     position: absolute;
     top: -35px;
@@ -26,7 +52,7 @@ body {
     height: 265px;
     width: 505px;
     margin-left: 20px;
-    cursor: s-resize;
+    cursor: ns-resize;
   }
   .scroll-normal {
     margin: auto;
@@ -67,7 +93,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 97.8vh;
     .topdata {
       border-bottom: 1px solid $black-color;
       color: $grey-color;
@@ -222,6 +248,11 @@ body {
     }
     tr:last-child td {
       padding-bottom: 0;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    body .datacontainer .inputdata .dataenter .input-container .left-input {
+      width: 200px;
     }
   }
 }
