@@ -10,6 +10,7 @@
             'app.species',
             'app.starships',
             'app.vehicles',
-            'ne.swapi'
+            'ne.swapi',
+            'ngLoadingSpinner'
         ]);
 })();

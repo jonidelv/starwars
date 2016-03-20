@@ -38,6 +38,7 @@
         var parent = parentState.toLowerCase();
         vm.selectedItem = '';
         $state.go(parent, { id:itemId });
+        angular.element('body')[0].scrollTop=30;
       };
 
 
