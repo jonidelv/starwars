@@ -4,51 +4,51 @@
     <table>
       <tbody>
         <tr>
-          <td class="one">Skin color :</td>
+          <td class="one">Skin color </td>
           <td>{{vm.species.skin_colors}}</td>
         </tr>
         <tr>
-          <td class="one">Average height :</td>
+          <td class="one">Average height </td>
           <td>{{vm.species.average_height}}</td>
         </tr>
         <tr>
-          <td class="one">Average lifespan :</td>
+          <td class="one">Average lifespan </td>
           <td>{{vm.species.average_lifespan}}</td>
         </tr>
         <tr>
-          <td class="one">Classification :</td>
+          <td class="one">Classification </td>
           <td>{{vm.species.classification}}</td>
         </tr>
         <tr>
-          <td class="one">Designation :</td>
+          <td class="one">Designation </td>
           <td>{{vm.species.designation}}</td>
         </tr>
         <tr>
-          <td class="one">Eye Colors :</td>
+          <td class="one">Eye Colors </td>
           <td>{{vm.species.eye_colors}}</td>
         </tr>
         <tr>
-          <td class="one">Hair Colors :</td>
+          <td class="one">Hair Colors </td>
           <td>{{vm.species.hair_colors}}</td>
         </tr>
         <tr>
-          <td class="one">Language :</td>
+          <td class="one">Language </td>
           <td>{{vm.species.language}}</td>
         </tr>
         <tr>
-          <td class="one">Homeworld :</td>
+          <td class="one">Homeworld </td>
           <td>{{vm.homeworld}}</td>
         </tr>
         <tr>
-          <td class="one">People :</td>
+          <td class="one">People </td>
           <td>
             <ul>
-              <li ng-repeat="person in vm.people" ui-sref="people({id:getId(person.url)})" class="link">{{person.name}}</li>
+              <li ng-repeat="person in vm.people" ui-sref="people({id: getId(person.url)})" class="link">{{person.name}}</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <td class="one">Films:</td>
+          <td class="one">Films</td>
           <td>
             <ul>
               <li class="link" ng-repeat="film in vm.films" ui-sref="films({id: vm.getId(film.url)})">{{film.title}}</li>

@@ -3,40 +3,40 @@
   <table class="scroll-normal">
     <tbody>
       <tr>
-        <td class="one">Birth Year:</td>
+        <td class="one">Birth Year</td>
         <td>{{vm.person.birth_year}}</td>
       </tr>
       <tr>
-        <td class="one">Eye Color:</td>
+        <td class="one">Eye Color</td>
         <td>{{vm.person.eye_color}}</td>
       </tr>
       <tr>
-        <td class="one">Gender:</td>
+        <td class="one">Gender</td>
         <td>{{vm.person.gender}}</td>
       </tr>
       <tr>
-        <td class="one">Hair Color:</td>
+        <td class="one">Hair Color</td>
         <td>{{vm.person.hair_color}}</td>
       </tr>
       <tr>
-        <td class="one">Height:</td>
+        <td class="one">Height</td>
         <td>{{vm.person.height}}</td>
       </tr>
       <tr>
-        <td class="one">Mass:</td>
+        <td class="one">Mass</td>
         <td>{{vm.person.mass}}</td>
       </tr>
       <tr>
-        <td class="one">Skin Color:</td>
+        <td class="one">Skin Color</td>
         <td>{{vm.person.skin_color}}</td>
       </tr>
       <tr>
-        <td class="one">Homeworld:</td>
+        <td class="one">Homeworld</td>
         <td ng-if=" vm.homeworld != 'unknown' " class="link" ui-sref="planets({ id: vm.homeWorldId }) ">{{vm.homeworld}}</td>
         <td ng-if=" vm.homeworld == 'unknown' ">{{vm.homeworld}}</td>
       </tr>
       <tr>
-        <td class="one">Films:</td>
+        <td class="one">Films</td>
         <td>
           <ul>
             <li class="link" ng-repeat="film in vm.films" ui-sref="films({id: vm.getId(film.url)})">{{film.title}}</li>
@@ -44,7 +44,7 @@
         </td>
       </tr>
       <tr>
-        <td class="one">Species:</td>
+        <td class="one">Species</td>
         <td ng-if="vm.person.species.length">
           <ul>
             <li class="link" ng-repeat="specie in vm.species" ui-sref="species({id: vm.getId(specie.url)})">{{specie.name}}</li>
@@ -55,7 +55,7 @@
         </td>
       </tr>
       <tr>
-        <td class="one">starships:</td>
+        <td class="one">starships</td>
         <td ng-if="vm.person.starships.length">
           <ul>
             <li class="link" ng-repeat="starship in vm.starships" ui-sref="starships({id: vm.getId(starship.url)})">{{starship.name}}</li>
@@ -66,7 +66,7 @@
         </td>
       </tr>
       <tr>
-        <td class="one">vehicles:</td>
+        <td class="one">vehicles</td>
         <td ng-if="vm.person.vehicles.length">
           <ul>
             <li class="link" ng-repeat="vehicle in vm.vehicles" ui-sref="vehicles({id: vm.getId(vehicle.url)})">{{vehicle.name}}</li>

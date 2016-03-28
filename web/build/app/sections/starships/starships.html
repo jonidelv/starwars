@@ -4,47 +4,47 @@
   <table>
     <tbody>
       <tr>
-        <td class="one">Cargo capacity :</td>
+        <td class="one">Cargo capacity </td>
         <td>{{vm.starships.cargo_capacity}}</td>
       </tr>
       <tr>
-        <td class="one">Consumables :</td>
+        <td class="one">Consumables </td>
         <td>{{vm.starships.consumables}}</td>
       </tr>
       <tr>
-        <td class="one">Crew :</td>
+        <td class="one">Crew </td>
         <td>{{vm.starships.crew}}</td>
       </tr>
       <tr>
-        <td class="one">Length :</td>
+        <td class="one">Length </td>
         <td>{{vm.starships.length}}</td>
       </tr>
       <tr>
-        <td class="one">Manufacturer :</td>
+        <td class="one">Manufacturer </td>
         <td>{{vm.starships.manufacturer}}</td>
       </tr>
       <tr>
-        <td class="one">Speed :</td>
+        <td class="one">Speed </td>
         <td>{{vm.starships.max_atmosphering_speed}}</td>
       </tr>
       <tr>
-        <td class="one">Model :</td>
+        <td class="one">Model </td>
         <td>{{vm.starships.model}}</td>
       </tr>
       <tr>
-        <td class="one">Passengers :</td>
+        <td class="one">Passengers </td>
         <td>{{vm.starships.passengers}}</td>
       </tr>
       <tr>
-        <td class="one">Vehicle class :</td>
+        <td class="one">Vehicle class </td>
         <td>{{vm.starships.starship_class}}</td>
       </tr>
       <tr>
-        <td class="one">Cost in credits :</td>
+        <td class="one">Cost in credits </td>
         <td>{{vm.starships.cost_in_credits}}</td>
       </tr>
       <tr>
-        <td class="one">Pilot :</td>
+        <td class="one">Pilot </td>
         <td  ng-if="vm.pilots.length">
           <ul>
             <li ng-repeat="pilot in vm.pilots" ui-sref="people({id: vm.getId(pilot.url)})" class="link">{{pilot.name}}</li>
@@ -53,7 +53,7 @@
         <td ng-if="!vm.pilots.length">None</td>
       </tr>
       <tr>
-        <td class="one" >Films:</td>
+        <td class="one" >Films</td>
         <td>
           <ul>
             <li class="link" ng-repeat="film in vm.films" ui-sref="films({id: vm.getId(film.url)})">{{film.title}}</li>

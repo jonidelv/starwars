@@ -48,11 +48,14 @@ body {
     left: 0px;
   }
   .scroll{
-    overflow: scroll;
     height: 265px;
     width: 505px;
     margin-left: 20px;
-    cursor: ns-resize;
+    overflow-y: auto;
+    overflow-x: hidden;
+    &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+    }
   }
   .scroll-normal {
     margin: auto;
@@ -250,9 +253,31 @@ body {
       padding-bottom: 0;
     }
   }
-  @media screen and (max-width: 480px) {
-    body .datacontainer .inputdata .dataenter .input-container .left-input {
-      width: 200px;
-    }
+
+}
+
+@media screen and (max-width: 480px) {
+  h2.subtitle {
+    font-size: 15px !important;
+  }
+  body .datacontainer .inputdata .dataenter .input-container .left-input, body .datacontainer .inputdata .dataenter .input-container .right-input {
+    width: 275px;
+    left: 0 !important;
+    border-radius: 0 !important;
+  }
+  button {
+    border-radius: 0 !important;
+  }
+  body .datacontainer .inputdata .dataenter .input-container .center-input {
+    width: 275px;
+    border: 1px solid white;
+    margin: 10px;
+  }
+  body .modal-content .modal-body {
+    background-image: none;
+  }
+  body .scroll {
+    overflow: scroll !important;
+    width: 300px;
   }
 }
