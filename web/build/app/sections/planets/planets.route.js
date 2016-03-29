@@ -13,7 +13,7 @@
       .state('planets', {
         parent: 'home',
         url: 'planets/:id',
-        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+        onEnter: ['$rootScope', '$uibModal', '$state', function($rootScope, $uibModal, $state) {
 
           $uibModal.open({
             controller: 'PlanetsController',
@@ -21,11 +21,13 @@
             templateUrl: 'app/sections/planets/planets.html',
             size: 'md'
           }).result.then(function() {
-            console.log('$state', $state);
-            $state.go($state.previous.name, { id: $state.previous.params.id });
+
+            $rootScope.stateHandler.goBack();
+
           }, function () {
-            console.log('$state', $state);
-            $state.go($state.previous.name, { id: $state.previous.params.id });
+
+            $rootScope.stateHandler.goBack();
+
           });
 
         }

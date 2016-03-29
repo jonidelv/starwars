@@ -13,7 +13,7 @@
       .state('people', {
         parent: 'home',
         url: 'people/:id',
-        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+        onEnter: ['$rootScope', '$uibModal', '$state', function($rootScope, $uibModal, $state) {
 
           $uibModal.open({
             controller: 'PeopleController',
@@ -21,10 +21,15 @@
             templateUrl: 'app/sections/people/people.html',
             size: 'md'
           }).result.then(function() {
-            $state.go($state.previous.name, { id: $state.previous.params.id });
+
+            $rootScope.stateHandler.goBack();
+
           }, function () {
-            $state.go($state.previous.name, { id: $state.previous.params.id });
+
+            $rootScope.stateHandler.goBack();
+
           });
+
 
         }
       ]

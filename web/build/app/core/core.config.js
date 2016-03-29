@@ -17,14 +17,33 @@
     $urlRouterProvider.otherwise('/');
   }
 
-  stateConfig.$inject = ['$rootScope', '$state'];
+  stateConfig.$inject = ['$rootScope', '$state', '$uibModalInstance'];
 
   /* @ngInject */
-  function stateConfig ($rootScope, $state) {
-    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+  function stateConfig ($rootScope, $state, $uibModalInstance) {
 
-      $state.previous = fromState;
-      $state.previous.params = fromParams;
+    $rootScope.stateHandler = {
+      history: [],
+      isGoingBack: false,
+      goBack: function(modalInstance) {
+        console.log(this.history);
+        var previousState = this.history.pop();
+        console.log(previousState);
+        this.isGoingBack = true;
+        if (previousState.name === 'home') { $uibModalInstance.close(); }
+        $state.go(previousState.name, {id: previousState.param});
+      }
+    };
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      // if $state is going home, remove state history
+      $rootScope.stateHandler.history = toParams.id ? $rootScope.stateHandler.history : [];
+
+      if (!$rootScope.stateHandler.isGoingBack && fromState.name) {
+        var previousState = fromState;
+        previousState.param = fromParams.id;
+        $rootScope.stateHandler.history.push(previousState);
+      }
+      $rootScope.stateHandler.isGoingBack = false;
     });
   }
 
