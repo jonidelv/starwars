@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td class="one">Residents</td>
-        <td  ng-if="vm.residents.length">
+        <td ng-if="vm.residents.length">
           <ul>
             <li ng-repeat="resident in vm.residents" ui-sref="people({id: vm.getId(resident.url)})" class="link">{{resident.name}}</li>
           </ul>

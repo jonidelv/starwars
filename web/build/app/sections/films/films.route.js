@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.films')
+    .module('app.sections.films')
     .config(filmsRoute);
 
   filmsRoute.$inject = ['$stateProvider'];
@@ -22,12 +22,11 @@
             size: 'md'
           }).result.then(function() {
             $state.go('^');
-          }, function () {
+          }, function() {
             $state.go('^');
           });
 
-        }
-      ]
+        }]
       });
   }
 

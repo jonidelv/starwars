@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.vehicles')
+    .module('app.sections.vehicles')
     .controller('VehiclesController', VehiclesController);
 
   VehiclesController.$inject = ['$q', '$stateParams', 'swapi'];

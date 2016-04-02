@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.people', [
+        .module('app.sections.people', [
 
         ]);
 })();

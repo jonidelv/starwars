@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.films', [
+        .module('app.sections.films', [
 
         ]);
 })();

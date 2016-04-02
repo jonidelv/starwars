@@ -4,7 +4,7 @@
     angular
         .module('app', [
             'app.core',
-            'app.views',
+            'app.sections.views',
             'app.components.starwars-modal'
         ]);
 })();

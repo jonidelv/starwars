@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.starships')
+    .module('app.sections.starships')
     .config(starshipsRoute);
 
   starshipsRoute.$inject = ['$stateProvider'];
@@ -22,12 +22,11 @@
             size: 'md'
           }).result.then(function() {
             $state.go('^');
-          }, function () {
+          }, function() {
             $state.go('^');
           });
 
-        }
-      ]
+        }]
       });
   }
 

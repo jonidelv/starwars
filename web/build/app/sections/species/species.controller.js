@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.species')
+    .module('app.sections.species')
     .controller('SpeciesController', SpeciesController);
 
   SpeciesController.$inject = ['$q', '$stateParams', 'swapi'];
@@ -44,7 +44,7 @@
 
     }
 
-    function getId(url){
+    function getId(url) {
       return url.replace(/\D/g, '');
     }
 

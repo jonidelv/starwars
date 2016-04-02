@@ -2,7 +2,6 @@
     'use strict';
 
     angular
-        .module('app.planets', [
-
+        .module('app.sections.planets', [
         ]);
 })();

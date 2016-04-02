@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.home')
+    .module('app.sections.home')
     .config(homeRoute);
 
   homeRoute.$inject = ['$stateProvider'];

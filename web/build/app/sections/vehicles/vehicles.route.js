@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.vehicles')
+    .module('app.sections.vehicles')
     .config(vehiclesRoute);
 
   vehiclesRoute.$inject = ['$stateProvider'];
@@ -22,12 +22,11 @@
             size: 'md'
           }).result.then(function() {
             $state.go('^');
-          }, function () {
+          }, function() {
             $state.go('^');
           });
 
-        }
-      ]
+        }]
       });
   }
 

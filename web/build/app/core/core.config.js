@@ -20,24 +20,26 @@
   stateConfig.$inject = ['$rootScope', '$state', '$uibModalStack'];
 
   /* @ngInject */
-  function stateConfig ($rootScope, $state, $uibModalStack) {
-
+  function stateConfig($rootScope, $state, $uibModalStack) {
     $rootScope.stateHandler = {
       history: [],
       isGoingBack: false,
-      goBack: function(modalInstance) {
-        console.log(this.history);
+      goBack: function() {
+        if (!this.history.length) {
+          return;
+        }
         var previousState = this.history.pop();
-        console.log(previousState);
+
         this.isGoingBack = true;
-        if (previousState.name === 'home') { $uibModalStack.dismissAll(); }
-        $state.go(previousState.name, {id: previousState.param});
+        if (previousState.name === 'home') {
+          $uibModalStack.dismissAll();
+        }
+        $state.go(previousState.name, {
+          id: previousState.param
+        });
       }
     };
-    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-      // if $state is going home, remove state history
-      $rootScope.stateHandler.history = toParams.id ? $rootScope.stateHandler.history : [];
-
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
       if (!$rootScope.stateHandler.isGoingBack && fromState.name) {
         var previousState = fromState;
         previousState.param = fromParams.id;

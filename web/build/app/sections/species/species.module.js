@@ -2,7 +2,6 @@
     'use strict';
 
     angular
-        .module('app.species', [
-
+        .module('app.sections.species', [
         ]);
 })();

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.planets')
+    .module('app.sections.planets')
     .config(planetsRoute);
 
   planetsRoute.$inject = ['$stateProvider'];
@@ -24,14 +24,13 @@
 
             $rootScope.stateHandler.goBack();
 
-          }, function () {
+          }, function() {
 
             $rootScope.stateHandler.goBack();
 
           });
 
-        }
-      ]
+        }]
       });
   }
 

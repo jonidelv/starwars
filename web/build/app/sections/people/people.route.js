@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.people')
+    .module('app.sections.people')
     .config(peopleRoute);
 
   peopleRoute.$inject = ['$stateProvider'];
@@ -24,15 +24,14 @@
 
             $rootScope.stateHandler.goBack();
 
-          }, function () {
+          }, function() {
 
             $rootScope.stateHandler.goBack();
 
           });
 
 
-        }
-      ]
+        }]
       });
   }
 

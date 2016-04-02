@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.people')
+    .module('app.sections.people')
     .controller('PeopleController', PeopleController);
 
   PeopleController.$inject = ['$q', '$stateParams', 'swapi'];
@@ -17,7 +17,6 @@
       return swapi.people.id($stateParams.id).then(function(person) {
         vm.person = person;
         vm.homeWorldId = vm.person.homeworld.replace(/\D/g, '');
-        console.log(vm.person);
 
         return swapi.get(vm.person.homeworld);
       }).then(function(response) {

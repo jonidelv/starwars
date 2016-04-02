@@ -44,7 +44,7 @@
       </tr>
       <tr>
         <td class="one">Pilot</td>
-        <td  ng-if="vm.pilots.length">
+        <td ng-if="vm.pilots.length">
           <ul>
             <li ng-repeat="pilot in vm.pilots" ui-sref="people({id: vm.getId(pilot.url)})" class="link">{{pilot.name}}</li>
           </ul>

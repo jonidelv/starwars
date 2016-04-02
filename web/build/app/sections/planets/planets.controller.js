@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.planets')
+    .module('app.sections.planets')
     .controller('PlanetsController', PlanetsController);
 
   PlanetsController.$inject = ['$q', '$stateParams', 'swapi'];

@@ -2,7 +2,6 @@
     'use strict';
 
     angular
-        .module('app.vehicles', [
-
+        .module('app.sections.vehicles', [
         ]);
 })();
