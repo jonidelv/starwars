@@ -17,10 +17,10 @@
     $urlRouterProvider.otherwise('/');
   }
 
-  stateConfig.$inject = ['$rootScope', '$state', '$uibModalInstance'];
+  stateConfig.$inject = ['$rootScope', '$state', '$uibModalStack'];
 
   /* @ngInject */
-  function stateConfig ($rootScope, $state, $uibModalInstance) {
+  function stateConfig ($rootScope, $state, $uibModalStack) {
 
     $rootScope.stateHandler = {
       history: [],
@@ -30,7 +30,7 @@
         var previousState = this.history.pop();
         console.log(previousState);
         this.isGoingBack = true;
-        if (previousState.name === 'home') { $uibModalInstance.close(); }
+        if (previousState.name === 'home') { $uibModalStack.dismissAll(); }
         $state.go(previousState.name, {id: previousState.param});
       }
     };
