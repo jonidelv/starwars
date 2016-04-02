@@ -21,15 +21,10 @@
             templateUrl: 'app/sections/people/people.html',
             size: 'md'
           }).result.then(function() {
-
             $rootScope.stateHandler.goBack();
-
           }, function() {
-
             $rootScope.stateHandler.goBack();
-
           });
-
 
         }]
       });

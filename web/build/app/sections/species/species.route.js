@@ -13,7 +13,7 @@
       .state('species', {
         parent: 'home',
         url: 'species/:id',
-        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+        onEnter: ['$rootScope', '$uibModal', '$state', function($rootScope, $uibModal, $state) {
 
           $uibModal.open({
             controller: 'SpeciesController',
@@ -21,9 +21,10 @@
             templateUrl: 'app/sections/species/species.html',
             size: 'md'
           }).result.then(function() {
-            $state.go('^');
-          }, function () {
-            $state.go('^');
+            $rootScope.stateHandler.goBack();
+          }, function() {
+            $rootScope.stateHandler.goBack();
+
           });
 
         }

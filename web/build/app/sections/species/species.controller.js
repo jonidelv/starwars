@@ -18,6 +18,9 @@
       return swapi.species.id($stateParams.id).then(function(species) {
         vm.species = species;
 
+        if (!vm.species.homeworld) {
+          vm.species.homeworld = 'http://swapi.co/api/planets/28/';
+        }
         return swapi.get(vm.species.homeworld);
       }).then(function(response) {
         vm.homeworld = response.name;

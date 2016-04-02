@@ -21,11 +21,8 @@
             templateUrl: 'app/sections/planets/planets.html',
             size: 'md'
           }).result.then(function() {
-
             $rootScope.stateHandler.goBack();
-
           }, function() {
-
             $rootScope.stateHandler.goBack();
 
           });

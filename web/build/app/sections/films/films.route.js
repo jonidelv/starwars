@@ -13,7 +13,7 @@
       .state('films', {
         parent: 'home',
         url: 'films/:id',
-        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+        onEnter: ['$rootScope', '$uibModal', '$state', function($rootScope, $uibModal, $state) {
 
           $uibModal.open({
             controller: 'FilmsController',
@@ -21,9 +21,9 @@
             templateUrl: 'app/sections/films/films.html',
             size: 'md'
           }).result.then(function() {
-            $state.go('^');
+            $rootScope.stateHandler.goBack();
           }, function() {
-            $state.go('^');
+            $rootScope.stateHandler.goBack();
           });
 
         }]

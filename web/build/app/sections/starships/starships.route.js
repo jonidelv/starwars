@@ -13,7 +13,7 @@
       .state('starships', {
         parent: 'home',
         url: 'starships/:id',
-        onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+        onEnter: ['$rootScope', '$uibModal', '$state', function($rootScope, $uibModal, $state) {
 
           $uibModal.open({
             controller: 'StarshipsController',
@@ -21,9 +21,10 @@
             templateUrl: 'app/sections/starships/starships.html',
             size: 'md'
           }).result.then(function() {
-            $state.go('^');
+            $rootScope.stateHandler.goBack();
           }, function() {
-            $state.go('^');
+            $rootScope.stateHandler.goBack();
+
           });
 
         }]
