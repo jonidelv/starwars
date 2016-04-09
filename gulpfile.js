@@ -57,7 +57,7 @@ gulp.task('clean', function() {
   //.pipe(gulp.dest('web/build/app/'));
 });
 
-// compilar jade
+// compile jade
 gulp.task('jadeCompila', ['clean'], function() {
   return gulp.src('web/src/**/*.jade')
     .pipe(plumber())
@@ -68,7 +68,7 @@ gulp.task('jadeCompila', ['clean'], function() {
     .pipe(gulp.dest('web/build/'));
 });
 
-// compilar jade 2
+// compile jade 2
 gulp.task('jadeCompila2', function() {
   return gulp.src('web/build/app/**/*.jade')
     .pipe(plumber())
@@ -82,7 +82,7 @@ gulp.task('jadeCompila2', function() {
 //jade watch
 gulp.task('jade-watch');
 
-//iject gulp
+//inject gulp
 gulp.task('inject', ['jadeCompila'], function() {
   gulp.src('./web/build/index.html')
     .pipe(inject(gulp.src(['web/build/bowerfiles/**/*.js', 'web/build/bowerfiles/**/*.css',
