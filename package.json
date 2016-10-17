@@ -4,7 +4,8 @@
   "description": "web structure for a new web project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp serve",
+    "deploy": "./scripts/deploy.sh"
   },
   "author": "delvallejoni",
   "license": "MIT",

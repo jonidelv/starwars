@@ -1,18 +1,4 @@
 @font-face {
-	font-family: 'Oswald';
-	font-style: normal;
-	font-weight: 400;
-	src: url(Oswald-normal-400.woff) format('woff');
-}
-
-@font-face {
-	font-family: 'Oswald';
-	font-style: normal;
-	font-weight: 700;
-	src: url(Oswald-normal-700.woff) format('woff');
-}
-
-@font-face {
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 500;
