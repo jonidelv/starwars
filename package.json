@@ -1,13 +1,12 @@
 {
-  "name": "web-workflow",
+  "name": "starwars",
   "version": "1.0.0",
-  "description": "web structure for a new web project",
   "main": "index.js",
   "scripts": {
     "start": "gulp serve",
     "deploy": "./scripts/deploy.sh"
   },
-  "author": "delvallejoni",
+  "author": "delvallejonatan",
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.11.1",

@@ -1,9 +1,8 @@
 {
-  "name": "web-workflow",
-  "description": "web structure for a new web project",
+  "name": "starwars",
   "main": "index.js",
   "authors": [
-    "delvallejoni"
+    "delvallejonatan"
   ],
   "license": "MIT",
   "moduleType": [],
