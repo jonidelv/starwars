@@ -3,7 +3,7 @@ mkdir dist;
 cd dist;
 echo "starwarsapp.space" > CNAME;
 cd ..;
-cp web/build/ dist/;
+cp -a ./web/build/. ./dist/;
 git commit -am "Save local changes";
 git checkout -B gh-pages;
 git add -f dist;
