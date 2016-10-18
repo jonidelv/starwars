@@ -152,6 +152,8 @@ body {
             display: inline-block;
             left: 3px;
             width: 120px;
+            outline: 0 !important;
+            box-shadow: none !important;
             .dropdown-menu {
               border-radius: 0;
               border-top-left-radius: 4px;
