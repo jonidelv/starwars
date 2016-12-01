@@ -14,6 +14,7 @@
     };
     vm.items = [];
     vm.itemsMap = {};
+    vm.year = new Date().getFullYear();
 
     vm.onSelectChange = function(option) {
       vm.loading = true;
