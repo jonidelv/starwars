@@ -15,11 +15,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.5.0",
-    "angular-ui-router": "^0.2.18",
-    "ui-select": "angular-ui-select#^0.14.9",
-    "angular-sanitize": "^1.5.0",
-    "ne-swapi": "^0.1.4",
-    "angular-bootstrap": "^1.1.2"
+    "angular": "1.5.0",
+    "angular-ui-router": "0.2.18",
+    "ui-select": "angular-ui-select#0.14.9",
+    "angular-sanitize": "1.5.0",
+    "ne-swapi": "0.1.4",
+    "angular-bootstrap": "1.1.2"
   }
 }
