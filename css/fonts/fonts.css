@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	src: url(Roboto-normal-500.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-style: italic;
+	font-weight: 500;
+	src: url(Roboto-italic-500.woff) format('woff');
+}

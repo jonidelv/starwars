@@ -1,0 +1,57 @@
+<starwars-modal data-title="vm.planets.name">
+  <div class="cover-title"></div>
+  <table class="scroll-normal">
+    <tbody>
+      <tr>
+        <td class="one">Climate</td>
+        <td>{{vm.planets.climate}}</td>
+      </tr>
+      <tr>
+        <td class="one">Diameter</td>
+        <td>{{vm.planets.diameter}}</td>
+      </tr>
+      <tr>
+        <td class="one">Gravity</td>
+        <td>{{vm.planets.gravity}}</td>
+      </tr>
+      <tr>
+        <td class="one">Orbital Period</td>
+        <td>{{vm.planets.orbital_period}}</td>
+      </tr>
+      <tr>
+        <td class="one">Population</td>
+        <td>{{vm.planets.population}}</td>
+      </tr>
+      <tr>
+        <td class="one">Rotation Period</td>
+        <td>{{vm.planets.rotation_period}}</td>
+      </tr>
+      <tr>
+        <td class="one">Surface Water</td>
+        <td>{{vm.planets.surface_water}}</td>
+      </tr>
+      <tr>
+        <td class="one">Terrain</td>
+        <td>{{vm.planets.terrain}}</td>
+      </tr>
+      <tr>
+        <td class="one">Residents</td>
+        <td ng-if="vm.residents.length">
+          <ul>
+            <li ng-repeat="resident in vm.residents" ui-sref="people({id: vm.getId(resident.url)})" class="link">{{resident.name}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.residents.length">None</td>
+      </tr>
+      <tr>
+        <td class="one">Films</td>
+        <td ng-if="vm.films.length">
+          <ul>
+            <li class="link" ng-repeat="film in vm.films" ui-sref="films({id: vm.getId(film.url)})">{{film.title}}</li>
+          </ul>
+        </td>
+        <td ng-if="!vm.films.length">unknown </td>
+      </tr>
+    </tbody>
+  </table>
+</starwars-modal>
